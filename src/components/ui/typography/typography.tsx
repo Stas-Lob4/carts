@@ -7,7 +7,7 @@ import s from './typography.module.scss'
 export type TextProps<T extends ElementType> = {
   as?: T
   children?: ReactNode
-  className: string
+  className?: string
   variant?:
     | 'body1'
     | 'body2'
