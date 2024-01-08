@@ -1,0 +1,124 @@
+@mixin flex(
+  $direction,
+  $rowGap: 0,
+  $colGap: 0,
+  $align-items: flex-start,
+  $justify-content: flex-start
+) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $rowGap $colGap;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin animation-circle-control($scale, $color: transparent) {
+  transform: translate(-50%, -50%) scale($scale);
+  background-color: var($color);
+}
+
+@mixin interactive-circle-element($size) {
+  &::before,
+  &::after {
+    @include animation-circle-control(0);
+
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: $size;
+    height: $size;
+
+    border-radius: 50%;
+
+    transition: 0.3s;
+  }
+}
+
+@mixin interactive-circle($active-color, $hover-color: --color-dark-500, $size: 2.25rem) {
+  @include interactive-circle-element($size);
+
+  &:focus-visible::before {
+    @include animation-circle-control(1, $hover-color);
+  }
+
+  &:hover::before {
+    @include animation-circle-control(1, $hover-color);
+  }
+
+  &:active::after {
+    @include animation-circle-control(1, $hover-color);
+  }
+
+  &:disabled::before,
+  &:disabled::after {
+    @include animation-circle-control(0, transpatrent);
+  }
+}
+
+label {
+  @include flex(row, 0, 0.75rem, center);
+
+  cursor: pointer;
+  width: max-content;
+
+  &.disabled {
+    cursor: auto;
+    color: var(--color-dark-100);
+  }
+
+  .checkbox {
+    @include interactive-circle(--color-dark-100);
+
+    all: unset;
+
+    cursor: pointer;
+
+    position: relative;
+
+    width: 1.125rem;
+    height: 1.125rem;
+
+    .frame {
+      position: absolute;
+      z-index: 5;
+      inset: 0;
+
+      box-sizing: border-box;
+
+      border: 0.125rem solid var(--color-light-900);
+      border-radius: 0.125rem;
+    }
+
+    .indicator {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+
+      fill: var(--color-light-100);
+    }
+
+    &:disabled {
+      cursor: auto;
+
+      &::before,
+      &::after {
+        @include animation-circle-control(0);
+      }
+
+      .frame {
+        border-color: var(--color-dark-100);
+      }
+
+      .indicator {
+        fill: var(--color-dark-100);
+      }
+    }
+  }
+}
