@@ -1,3 +1,4 @@
+export { default as ArrowDown } from './arrowDown'
 export { default as Check } from './check'
 export { default as Close } from './close'
 export { default as Eye } from './eye'
