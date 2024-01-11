@@ -1,3 +1,10 @@
+import { Header } from '@/components/ui/header'
+
 export function App() {
-  return <div>Hello</div>
+  return (
+    <div>
+      Hello
+      <Header isLoggedIn />
+    </div>
+  )
 }

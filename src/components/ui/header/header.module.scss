@@ -1,0 +1,28 @@
+@import '@/components/ui/typography/typography.module';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 1280px;
+  height: 60px;
+
+  background-color: var(--color-dark-700);
+  border-bottom: 1px var(--color-dark-500) solid;
+}
+
+.userData {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+
+  & span {
+    @include typography(var(--font-size-m), var(--font-weight-bold), var(--line-height-m));
+
+    background-image: linear-gradient(to right, white 30%, rgb(255 255 255 / 0%) 0%);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: 9px 1px;
+  }
+}
