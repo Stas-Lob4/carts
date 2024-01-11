@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-
 import { Header } from '@/components/ui/header/header'
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Header,
@@ -11,15 +10,17 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const HeaderWithButton: Story = {
+export const LoggedIn: Story = {
   args: {
-    isLoggedIn: false,
+    isLoggedIn: true,
+    userAvatar:
+      'https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/298e3af6-f449-4c7b-b347-ad5276a0f2f2/576x',
+    userName: 'Александр',
   },
 }
 
-export const HeaderWithAvatar: Story = {
+export const NotLoggedIn: Story = {
   args: {
-    isLoggedIn: true,
-    userName: 'User',
+    isLoggedIn: false,
   },
 }

@@ -1,30 +1,41 @@
 import logo from '@/assets/images/Logo.svg'
-import userAva from '@/assets/images/userAva.svg'
-import { Button } from '@/components'
+import { Button, Typography } from '@/components'
+import { Avatar } from '@/components/ui/header/avatar'
 
 import s from './header.module.scss'
 
-export type CardProps = {
+export type HeaderProps = {
   isLoggedIn: boolean
   userAvatar?: string
   userName?: string
 }
 
-export const Header = (props: CardProps) => {
-  const { isLoggedIn, userName = 'Ivan' } = props
+export const Header = (props: HeaderProps) => {
+  const { isLoggedIn, userAvatar, userName } = props
 
   return (
     <header className={s.header}>
-      <img alt={'it-incubator logo'} src={logo} />
+      <div className={s.headerContent}>
+        <a href={'#'}>
+          <img alt={'it-incubator logo'} src={logo} />
+        </a>
 
-      {isLoggedIn ? (
-        <div className={s.userData}>
-          <span>{userName}</span>
-          <img alt={'user avatar'} src={userAva} />
-        </div>
-      ) : (
-        <Button variant={'primary'}>Sign In</Button>
-      )}
+        {isLoggedIn && (
+          <div className={s.user}>
+            <Typography className={s.userName} variant={'subtitle1'}>
+              {userName}
+            </Typography>
+            {/*there will be DropDown component later for in Avatar*/}
+            <Avatar name={userName} src={userAvatar} />
+          </div>
+        )}
+
+        {!isLoggedIn && (
+          <Button as={'a'} href={'#'}>
+            Sign In
+          </Button>
+        )}
+      </div>
     </header>
   )
 }

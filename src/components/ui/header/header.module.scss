@@ -1,28 +1,60 @@
-@import '@/components/ui/typography/typography.module';
-
 .header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: 0;
+
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   width: 1280px;
   height: 60px;
+  margin: 0 auto;
 
   background-color: var(--color-dark-700);
   border-bottom: 1px var(--color-dark-500) solid;
 }
 
-.userData {
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1010px;
+
+  img {
+    display: block;
+  }
+}
+
+.user {
   display: flex;
   gap: 14px;
   align-items: center;
 
-  & span {
-    @include typography(var(--font-size-m), var(--font-weight-bold), var(--line-height-m));
+  img:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 6px var(--color-accent-100));
+  }
+}
 
-    background-image: linear-gradient(to right, white 30%, rgb(255 255 255 / 0%) 0%);
-    background-repeat: repeat-x;
-    background-position: bottom;
-    background-size: 9px 1px;
+.userName {
+  cursor: pointer;
+  border-bottom: 2px dashed var(--color-light-100);
+
+  &:hover {
+    color: var(--color-accent-100);
+    border-bottom-color: var(--color-accent-100);
+  }
+
+  &:active {
+    color: var(--color-accent-300);
+    border-bottom-color: var(--color-accent-300);
+  }
+
+  &:focus-visible {
+    color: var(--color-info-300);
+    border-bottom-color: var(--color-info-300);
   }
 }
