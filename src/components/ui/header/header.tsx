@@ -1,6 +1,6 @@
 import logo from '@/assets/images/Logo.svg'
 import { Button, Typography } from '@/components'
-import { Avatar } from '@/components/ui/header/avatar'
+import { Avatar } from '@/components/ui/avatar'
 
 import s from './header.module.scss'
 
