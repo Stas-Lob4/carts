@@ -26,7 +26,7 @@ const testData = [
   },
 ]
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     options: testData,
   },
