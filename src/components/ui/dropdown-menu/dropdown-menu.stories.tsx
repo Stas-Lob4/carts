@@ -1,5 +1,6 @@
 import { EditOutline, Logout, PersonOutline, PlayCircleOutline, TrashOutline } from '@/assets'
 import {
+  Avatar,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRoot,
@@ -8,6 +9,9 @@ import {
   Typography,
 } from '@/components'
 import { Meta, StoryObj } from '@storybook/react'
+
+import p from '../header/user-dropdown/user-dropdown.module.scss'
+import s from './dropdown-menu.module.scss'
 
 const meta = {
   component: DropdownMenuRoot,
@@ -21,39 +25,15 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Learn: Story = {
-  args: {},
-  render: () => (
-    <DropdownMenuRoot>
-      <DropdownMenuTrigger asChild>
-        <button>Open</button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <PlayCircleOutline />
-          <Typography>Learn</Typography>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <EditOutline />
-          Edit
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <TrashOutline />
-          Delete
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenuRoot>
-  ),
-}
-
 export const HeaderDropDown: Story = {
   args: {},
   render: () => (
     <DropdownMenuRoot>
       <DropdownMenuTrigger asChild>
-        <button>Image</button>
+        <button className={p.trigger}>
+          <Typography className={p.userName}>Name</Typography>
+          <Avatar />
+        </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
@@ -69,6 +49,33 @@ export const HeaderDropDown: Story = {
         <DropdownMenuItem>
           <Logout />
           Sign out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenuRoot>
+  ),
+}
+
+export const CartDropDown: Story = {
+  args: {},
+  render: () => (
+    <DropdownMenuRoot>
+      <DropdownMenuTrigger asChild>
+        <button className={s.button}>Open</button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>
+          <PlayCircleOutline />
+          Learn
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <EditOutline />
+          Edit
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <TrashOutline />
+          Delete
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenuRoot>
