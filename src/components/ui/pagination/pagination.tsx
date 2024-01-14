@@ -1,12 +1,11 @@
 import { FC } from 'react'
 
+import { ArrowLeft, ArrowRight } from '@/assets'
+import { Option, Select } from '@/components'
 import { clsx } from 'clsx'
 
 import s from './pagination.module.scss'
 
-import arrowLeft from '../../../assets/icons/arrowLeft.svg'
-import arrowRight from '../../../assets/icons/arrowRight.svg'
-import { Option, Select } from '../select/select'
 import { usePagination } from './usePagination'
 
 type PaginationConditionals =
@@ -123,7 +122,7 @@ const PageButton: FC<PageButtonProps> = ({ disabled, onClick, page, selected }) 
 const PrevButton: FC<NavigationButtonProps> = ({ disabled, onClick }) => {
   return (
     <button className={classNames.item} disabled={disabled} onClick={onClick}>
-      <img className={classNames.icon} src={arrowLeft} />
+      <ArrowLeft className={classNames.icon} />
     </button>
   )
 }
@@ -131,7 +130,7 @@ const PrevButton: FC<NavigationButtonProps> = ({ disabled, onClick }) => {
 const NextButton: FC<NavigationButtonProps> = ({ disabled, onClick }) => {
   return (
     <button className={classNames.item} disabled={disabled} onClick={onClick}>
-      <img className={classNames.icon} src={arrowRight} />
+      <ArrowRight className={classNames.icon} />
     </button>
   )
 }
