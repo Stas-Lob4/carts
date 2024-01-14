@@ -1,17 +1,19 @@
 import logo from '@/assets/images/Logo.svg'
-import { Button, Typography } from '@/components'
-import { Avatar } from '@/components/ui/avatar'
+import { Button } from '@/components'
+import { UserDropDown, UserDropDownProps } from '@/components/ui/header/user-dropdown/user-dropdown'
 
 import s from './header.module.scss'
 
-export type HeaderProps = {
-  isLoggedIn: boolean
-  userAvatar?: string
-  userName?: string
-}
+export type HeaderProps =
+  | (Partial<UserDropDownProps> & {
+      isLoggedIn: false
+    })
+  | (UserDropDownProps & {
+      isLoggedIn: true
+    })
 
 export const Header = (props: HeaderProps) => {
-  const { isLoggedIn, userAvatar, userName } = props
+  const { avatar, email, isLoggedIn, onLogout, userName } = props
 
   return (
     <header className={s.header}>
@@ -21,13 +23,7 @@ export const Header = (props: HeaderProps) => {
         </a>
 
         {isLoggedIn && (
-          <div className={s.user}>
-            <Typography className={s.userName} variant={'subtitle1'}>
-              {userName}
-            </Typography>
-            {/*there will be DropDown component later for in Avatar*/}
-            <Avatar name={userName} src={userAvatar} />
-          </div>
+          <UserDropDown avatar={avatar} email={email} onLogout={onLogout} userName={userName} />
         )}
 
         {!isLoggedIn && (
