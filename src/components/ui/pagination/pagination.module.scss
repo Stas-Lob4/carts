@@ -36,7 +36,7 @@
       opacity: 1;
     }
   
-    &:active:not(&:disabled)  {
+    &:focus:not(&:active)  {
       background-color: var(--color-dark-900);
       border: 2px solid var(--color-info-900)
   }
