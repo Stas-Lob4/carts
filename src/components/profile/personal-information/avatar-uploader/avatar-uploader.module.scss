@@ -1,0 +1,37 @@
+.avatar {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+
+.editAvatar {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 2rem;
+  height: 2rem;
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+
+  &:hover {
+    background: none;
+  }
+}
+
+.root {
+  position: relative;
+}
+
+.uploader {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+}

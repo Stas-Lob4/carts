@@ -1,0 +1,42 @@
+.nameWithEditButton {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 0.625rem;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.editNameButton {
+  all: unset;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1rem;
+  height: 1rem;
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+}
+
+.email {
+  margin: 0.75rem 0;
+  color: var(--color-dark-100);
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
