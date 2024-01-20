@@ -56,7 +56,7 @@ export const SignIn = ({ onSubmit }: Props) => {
       <div className={s.signUp}>
         <Typography variant={'body2'}>Don&apos;t have an account?</Typography>
 
-        <Typography as={Link} className={s.signUpLink} to={'/sign-up'} variant={'link1'}>
+        <Typography as={Link} className={s.signUpLink} to={'/sign-up'} variant={'h3'}>
           Sign up
         </Typography>
       </div>
