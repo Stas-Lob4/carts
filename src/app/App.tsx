@@ -1,13 +1,12 @@
+import { Provider } from 'react-redux'
+
 import { Router } from '@/app/router'
-import { Header } from '@/components/ui/header'
+import { store } from '@/services'
 
 export function App() {
   return (
-    <div>
-      <Header email={'email@gmail.com'} isLoggedIn onLogout={() => {}} userName={'Vasia'} />
-      <div>
-        <Router />
-      </div>
-    </div>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   )
 }
