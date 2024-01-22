@@ -40,7 +40,7 @@
   }
 }
 
-@mixin interactive-circle($active-color, $hover-color: --color-dark-500, $size: 2.25rem) {
+@mixin interactive-circle($active-color, $hover-color: var(--color-dark-500), $size: 2.25rem) {
   @include interactive-circle-element($size);
 
   &:focus-visible::before {

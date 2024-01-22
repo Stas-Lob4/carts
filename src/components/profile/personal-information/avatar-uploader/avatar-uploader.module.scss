@@ -17,7 +17,7 @@
   height: 2rem;
 
   &:focus-visible {
-    outline: var(--outline-focus);
+    outline: var(--color-info-500);
   }
 
   &:hover {
