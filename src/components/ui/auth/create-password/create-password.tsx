@@ -1,13 +1,10 @@
 import { useForm } from 'react-hook-form'
 
+import { Button, Card, TextField, Typography } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './create-password.module.scss'
-
-import { Card, Typography } from '../..'
-import { Button } from '../../button'
-import { TextField } from '../../text-field'
 
 const newPasswordSchema = z.object({
   password: z.string().min(3).max(30),
