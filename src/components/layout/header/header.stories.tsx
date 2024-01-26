@@ -1,9 +1,9 @@
-import { Header } from '@/components/ui/header/header'
+import { Header } from '@/components'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   argTypes: {
-    onLogout: { action: 'logout' },
+    logout: { action: 'logout' },
   },
   component: Header,
   tags: ['autodocs'],
@@ -14,16 +14,18 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const LoggedIn: Story = {
-  // @ts-expect-error onLogout is required but it is provided through argTypes
   args: {
-    email: 'email@gmai.com',
     isLoggedIn: true,
-    userName: 'Name',
+    profile: {
+      email: 'email@gmai.com',
+      name: 'Name',
+    },
   },
 }
 
 export const NotLoggedIn: Story = {
   args: {
     isLoggedIn: false,
+    profile: undefined,
   },
 }
