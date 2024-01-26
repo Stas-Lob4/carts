@@ -94,7 +94,7 @@
       outline: 0;
 
       &:focus-visible {
-        outline: var(--outline-focus);
+        outline: var(--color-info-700);
       }
     }
   }

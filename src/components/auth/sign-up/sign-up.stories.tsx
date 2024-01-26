@@ -6,7 +6,7 @@ const meta = {
   component: SignUp,
   decorators: [withRouter],
   tags: ['autodocs'],
-  title: 'Auth/Sign Up',
+  title: 'features/Auth/Sign Up',
 } satisfies Meta<typeof SignUp>
 
 export default meta
