@@ -7,7 +7,6 @@ import * as Dialog from '@radix-ui/react-dialog'
 import s from './modal.module.scss'
 
 export type Modals = {
-  children?: ReactNode
   title?: string
   trigger?: ReactNode
 } & ComponentPropsWithoutRef<typeof Dialog.Content>
@@ -22,8 +21,8 @@ export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, Modals>((prop
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={s.overlay} />
-        <Dialog.Content asChild ref={ref}>
-          <Card className={s.window}>
+        <Dialog.Content asChild className={s.window} ref={ref}>
+          <Card>
             {title && (
               <div className={s.header}>
                 <Dialog.Title asChild>
@@ -31,7 +30,7 @@ export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, Modals>((prop
                     {title}
                   </Typography>
                 </Dialog.Title>
-                <Dialog.Close aria-label={'Close'} asChild className={s.closeButton}>
+                <Dialog.Close aria-label={'Close'} className={s.closeButton}>
                   <Close fill={'white'} />
                 </Dialog.Close>
               </div>
