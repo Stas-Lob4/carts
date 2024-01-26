@@ -6,9 +6,9 @@ import { z } from 'zod'
 
 import s from './forgot-password.module.scss'
 
-import { Card, Typography } from '../..'
-import { Button } from '../../button'
-import { TextField } from '../../text-field'
+import { Card, Typography } from '../../ui'
+import { Button } from '../../ui/button'
+import { TextField } from '../../ui/text-field'
 
 const EmailSchema = z.object({
   email: z.string().min(1).email('Invalid email address'),
