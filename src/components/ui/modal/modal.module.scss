@@ -1,3 +1,7 @@
+.trigger {
+  cursor: pointer;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -6,6 +10,7 @@
 
 .window {
   position: fixed;
+  z-index: 5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -37,19 +42,25 @@
 
   cursor: pointer;
 
-  border: none;
-  outline: none;
+  display: flex;
 
-  fill: white;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  transition: 0.4s background-color;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-dark-300);
+    outline: 2px solid transparent;
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  align-items: start;
-  justify-content: space-between;
-
   padding: 24px;
 }
 
