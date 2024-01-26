@@ -25,7 +25,7 @@ export const UserDropDown = (props: UserDropDownProps) => {
     <DropdownMenuRoot>
       <DropdownMenuTrigger asChild>
         <button className={s.trigger}>
-          <Typography className={s.triggerName} variant={'subtitle1'}>
+          <Typography className={s.userName} variant={'subtitle1'}>
             {userName}
           </Typography>
           <Avatar src={avatar} />

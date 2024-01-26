@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom'
+
 import logo from '@/assets/images/Logo.svg'
-import { ProfileData } from '@/common'
+import { ProfileData, ROUTES } from '@/common'
 import { Button } from '@/components'
 
 import s from './header.module.scss'
@@ -17,9 +19,9 @@ export const Header = (props: HeaderProps) => {
   return (
     <header className={s.header}>
       <div className={s.headerContent}>
-        <a href={'#'}>
+        <Link to={ROUTES.base}>
           <img alt={'it-incubator logo'} src={logo} />
-        </a>
+        </Link>
 
         {isLoggedIn && profile ? (
           <div className={s.trigger}>
