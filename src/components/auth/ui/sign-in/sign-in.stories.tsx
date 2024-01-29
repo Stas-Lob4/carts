@@ -1,13 +1,14 @@
-import { SignUp, SignUpFormValues } from '@/components'
+import { SignIn } from '@/components'
+import { SignInFormValues } from '@/components/auth/lib'
 import { Meta, StoryObj } from '@storybook/react'
 import { withRouter } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  component: SignUp,
+  component: SignIn,
   decorators: [withRouter],
   tags: ['autodocs'],
-  title: 'features/Auth/Sign Up',
-} satisfies Meta<typeof SignUp>
+  title: 'Features/Auth/Sign In Form',
+} satisfies Meta<typeof SignIn>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -15,10 +16,10 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {} as any,
   render: () => {
-    const onSubmitHandler = (data: SignUpFormValues) => {
+    const onSubmitHandler = (data: SignInFormValues) => {
       alert(JSON.stringify(data))
     }
 
-    return <SignUp onSubmit={onSubmitHandler} />
+    return <SignIn onSubmit={onSubmitHandler} />
   },
 }

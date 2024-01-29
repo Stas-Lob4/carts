@@ -22,7 +22,7 @@
 .signIn {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
   align-items: center;
 
   color: var(--color-light-900);
@@ -30,7 +30,6 @@
 
 .signInLink {
   color: var(--color-accent-500);
-  text-decoration: underline;
 
   &:hover {
     color: var(--color-accent-300);

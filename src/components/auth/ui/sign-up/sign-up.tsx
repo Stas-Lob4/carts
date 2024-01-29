@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import {
-  Button,
-  Card,
-  ControlledTextField,
-  SignUpFormValues,
-  Typography,
-  useSignUp,
-} from '@/components'
+import { ROUTES } from '@/common'
+import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { SignUpFormValues, useSignUp } from '@/components/auth/lib'
 
 import s from './sign-up.module.scss'
 
@@ -22,14 +17,14 @@ export const SignUp = ({ onSubmit }: Props) => {
     handleSubmit,
   } = useSignUp()
 
-  const onSubmitHandler = handleSubmit(onSubmit)
+  const submitHandler = handleSubmit(onSubmit)
 
   return (
     <Card className={s.card}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
         Sign Up
       </Typography>
-      <form className={s.form} onSubmit={onSubmitHandler}>
+      <form className={s.form} onSubmit={submitHandler}>
         <ControlledTextField
           control={control}
           errorMessage={errors.email?.message}
@@ -58,7 +53,7 @@ export const SignUp = ({ onSubmit }: Props) => {
 
       <div className={s.signIn}>
         <Typography variant={'body2'}>Already have an account?</Typography>
-        <Typography as={Link} className={s.signInLink} to={'/sign-in'} variant={'h3'}>
+        <Typography as={Link} className={s.signInLink} to={ROUTES.signIn} variant={'h3'}>
           Sign In
         </Typography>
       </div>

@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import {
-  Button,
-  Card,
-  ControlledCheckbox,
-  ControlledTextField,
-  SignInFormValues,
-  Typography,
-  useSignIn,
-} from '@/components'
+import { ROUTES } from '@/common'
+import { Button, Card, ControlledCheckbox, ControlledTextField, Typography } from '@/components'
+import { SignInFormValues, useSignIn } from '@/components/auth/lib'
 
 import s from './sign-in.module.scss'
 
@@ -23,14 +17,14 @@ export const SignIn = ({ onSubmit }: Props) => {
     handleSubmit,
   } = useSignIn()
 
-  const onSubmitHandler = handleSubmit(onSubmit)
+  const submitHandler = handleSubmit(onSubmit)
 
   return (
     <Card className={s.card}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
         Sign In
       </Typography>
-      <form className={s.form} onSubmit={onSubmitHandler}>
+      <form className={s.form} onSubmit={submitHandler}>
         <ControlledTextField
           control={control}
           errorMessage={errors.email?.message}
@@ -49,15 +43,15 @@ export const SignIn = ({ onSubmit }: Props) => {
           Forgot Password?
         </Typography>
         <Button fullWidth type={'submit'}>
-          Sign in
+          Sign In
         </Button>
       </form>
 
       <div className={s.signUp}>
         <Typography variant={'body2'}>Don&apos;t have an account?</Typography>
 
-        <Typography as={Link} className={s.signUpLink} to={'/sign-up'} variant={'h3'}>
-          Sign up
+        <Typography as={Link} className={s.signUpLink} to={ROUTES.signUp} variant={'h3'}>
+          Sign Up
         </Typography>
       </div>
     </Card>

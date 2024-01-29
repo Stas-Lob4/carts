@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ForgotPasswordForm } from '@/components'
+import { ResetPasswordForm } from '@/components'
 import { withRouter } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  component: ForgotPasswordForm,
+  component: ResetPasswordForm,
   decorators: [withRouter],
   tags: ['autodocs'],
-  title: 'Components/ForgotPasswordForm',
-} satisfies Meta<typeof ForgotPasswordForm>
+  title: 'Features/Auth/Reset Password Form',
+} satisfies Meta<typeof ResetPasswordForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
