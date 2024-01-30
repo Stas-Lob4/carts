@@ -59,10 +59,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       closeButton: clsx(s.closeIcon),
       container: clsx(s.container),
       error: clsx(s.error),
-      input: clsx(s.input, !!errorMessage && s.error, isSearch),
+      input: clsx(s.input, !!errorMessage && s.error, isSearch && s.hasSearchIcon, className),
       label: clsx(s.label),
       root: clsx(s.root),
-      searchIcon: clsx(s.searchIcon),
+      searchIcon: clsx(s.searchIcon, rest.disabled && s.disabled),
     }
 
     return (
