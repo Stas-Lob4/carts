@@ -15,7 +15,7 @@ const authService = baseApi.injectEndpoints({
       createAccessToken: builder.mutation<void, void>({
         query: () => ({ method: 'POST', url: '/v1/auth/refresh-token' }),
       }),
-      getMe: builder.query<User | undefined, void>({
+      getMe: builder.query<User | null, void>({
         providesTags: ['Me'],
         query: () => '/v1/auth/me',
       }),
@@ -38,10 +38,10 @@ const authService = baseApi.injectEndpoints({
         query: arg => ({
           body: arg,
           method: 'POST',
-          url: '.v1/auth/recover-password',
+          url: '/v1/auth/recover-password',
         }),
       }),
-      resetCheckEmail: builder.mutation<void, ResendCheckEmailArgs>({
+      resendCheckEmail: builder.mutation<void, ResendCheckEmailArgs>({
         query: arg => ({ body: arg, method: 'POST', url: '/v1/auth/resend-verification-email' }),
       }),
       resetPassword: builder.mutation<void, { password: string; token: string }>({
@@ -59,7 +59,7 @@ const authService = baseApi.injectEndpoints({
         query: arg => ({
           body: arg,
           method: 'PATCH',
-          url: '/v1/aut/me',
+          url: '/v1/auth/me',
         }),
       }),
     }
@@ -73,7 +73,7 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useRecoverPasswordMutation,
-  useResetCheckEmailMutation,
+  useResendCheckEmailMutation,
   useResetPasswordMutation,
   useSignUpMutation,
   useUpdateProfileMutation,

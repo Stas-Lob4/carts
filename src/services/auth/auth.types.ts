@@ -11,7 +11,7 @@ export type User = {
 export type LoginArgs = {
   email: string
   password: string
-  rememberMe: boolean
+  rememberMe?: boolean
 }
 
 export type SignUpArgs = {
