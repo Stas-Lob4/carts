@@ -1,0 +1,12 @@
+.sortArrow {
+  align-items: center;
+  justify-content: center;
+
+  &.asc {
+    transform: rotate(0);
+  }
+
+  &.desc {
+    transform: rotate(180deg);
+  }
+}
