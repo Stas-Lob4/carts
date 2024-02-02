@@ -59,6 +59,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.21.3
     version: 6.21.3(react-dom@18.2.0)(react@18.2.0)
+  react-spinners:
+    specifier: ^0.13.8
+    version: 0.13.8(react-dom@18.2.0)(react@18.2.0)
   storybook-addon-react-router-v6:
     specifier: ^2.0.10
     version: 2.0.10(@storybook/blocks@7.6.7)(@storybook/channels@7.6.7)(@storybook/components@7.6.7)(@storybook/core-events@7.6.7)(@storybook/manager-api@7.6.7)(@storybook/preview-api@7.6.7)(@storybook/theming@7.6.8)(react-dom@18.2.0)(react-router-dom@6.21.3)(react@18.2.0)
@@ -9425,6 +9428,16 @@ packages:
     dependencies:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /react-spinners@0.13.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3e+k56lUkPj0vb5NDXPVFAOkPC//XyhKPJjvcGjyMNPWsBKpplfeyialP74G7H7+It7KzhtET+MvGqbKgAqpZA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.2.45)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}

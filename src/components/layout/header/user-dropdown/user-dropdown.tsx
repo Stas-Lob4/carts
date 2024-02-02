@@ -1,6 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { Logout, PersonOutline, PlayCircleOutline } from '@/assets'
+import { ROUTES } from '@/common'
 import {
   Avatar,
   DropdownMenuContent,
@@ -17,22 +18,26 @@ import s from './user-dropdown.module.scss'
 export type UserDropDownProps = {
   avatar?: string
   email: string
-  onLogout: ComponentPropsWithoutRef<typeof DropdownMenuItem>['onSelect']
+  logout: () => void
   userName: string
 }
 export const UserDropDown = (props: UserDropDownProps) => {
-  const { avatar, email, onLogout, userName } = props
+  const { avatar, email, logout, userName } = props
 
   return (
     <DropdownMenuRoot>
-      <DropdownMenuTrigger asChild>
-        <button className={s.trigger}>
+      <div className={s.navLinkBox}>
+        <NavLink to={ROUTES.profile}>
           <Typography className={s.userName} variant={'subtitle1'}>
             {userName}
           </Typography>
-          <Avatar src={avatar} />
-        </button>
-      </DropdownMenuTrigger>
+        </NavLink>
+        <DropdownMenuTrigger asChild>
+          <button className={s.trigger}>
+            <Avatar src={avatar} />
+          </button>
+        </DropdownMenuTrigger>
+      </div>
       <DropdownMenuContent>
         <DropdownMenuLabel>
           <Avatar src={avatar} />
@@ -53,7 +58,7 @@ export const UserDropDown = (props: UserDropDownProps) => {
           My Profile
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onSelect={onLogout}>
+        <DropdownMenuItem onSelect={logout}>
           <Logout />
           Sign out
         </DropdownMenuItem>
