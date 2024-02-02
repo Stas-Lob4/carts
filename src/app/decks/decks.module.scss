@@ -1,0 +1,77 @@
+.body {
+    box-sizing: content-box;
+    max-width: 1010px;
+    margin: 0 auto;
+    padding-block: 96px 30px;
+    padding-inline: 12px;
+}
+
+.cardsParameters {
+    display: flex;
+    flex-direction: row;
+    row-gap: 24px;
+    column-gap: 12px;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.allSettings {
+    margin-bottom: 36px;
+}
+
+.deleteButton {
+    margin-top: 27px
+}
+
+.table {
+    width: 1006px;
+    margin: 0 auto;
+}
+
+
+.topItems {
+    display: flex;
+    flex-direction: row;
+    row-gap: 0;
+    column-gap: 0;
+    align-items: center;
+    justify-content: space-between;
+
+
+    margin-bottom: 7px
+}
+
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    row-gap: 24px;
+    column-gap: 24px;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 64px;
+}
+
+.tableDataRow {
+    transition: .3s;
+    &:hover{background-color: var(--color-dark-700);}
+}
+
+.deckInfo {
+    display: flex;
+    gap: 20px;
+    align-items:center;
+}
+
+
+.deckName {
+    text-decoration: none;
+
+    &:hover{
+        color: var( --color-accent-100);
+        text-decoration: underline
+    }
+}
+
+
