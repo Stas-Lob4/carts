@@ -2,7 +2,6 @@ import { BarLoader } from 'react-spinners'
 
 export const Loader = () => {
   const style = {
-    top: '60px',
     width: '100%',
   }
 
