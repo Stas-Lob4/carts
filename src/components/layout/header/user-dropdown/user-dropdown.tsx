@@ -1,4 +1,7 @@
+import { NavLink } from 'react-router-dom'
+
 import { Logout, PersonOutline, PlayCircleOutline } from '@/assets'
+import { ROUTES } from '@/common'
 import {
   Avatar,
   DropdownMenuContent,
@@ -23,14 +26,18 @@ export const UserDropDown = (props: UserDropDownProps) => {
 
   return (
     <DropdownMenuRoot>
-      <DropdownMenuTrigger asChild>
-        <button className={s.trigger}>
+      <div className={s.navLinkBox}>
+        <NavLink to={ROUTES.profile}>
           <Typography className={s.userName} variant={'subtitle1'}>
             {userName}
           </Typography>
-          <Avatar src={avatar} />
-        </button>
-      </DropdownMenuTrigger>
+        </NavLink>
+        <DropdownMenuTrigger asChild>
+          <button className={s.trigger}>
+            <Avatar src={avatar} />
+          </button>
+        </DropdownMenuTrigger>
+      </div>
       <DropdownMenuContent>
         <DropdownMenuLabel>
           <Avatar src={avatar} />

@@ -6,13 +6,14 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { ROUTES } from '@/common'
-import { Layout } from '@/components'
-
 const publicRouter: RouteObject[] = [
   {
     element: <div>Sign-in</div>,
     path: ROUTES.signIn,
+  },
+  {
+    element: <Decks />,
+    path: '/decks',
   },
 ]
 
