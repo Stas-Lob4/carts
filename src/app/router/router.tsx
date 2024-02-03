@@ -6,14 +6,14 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { ROUTES } from '@/common'
+import { Layout } from '@/components'
+import { ErrorPage } from '@/pages'
+
 const publicRouter: RouteObject[] = [
   {
     element: <div>Sign-in</div>,
     path: ROUTES.signIn,
-  },
-  {
-    element: <Decks />,
-    path: '/decks',
   },
 ]
 
@@ -44,6 +44,7 @@ const router = createBrowserRouter([
       },
     ],
     element: <Layout />,
+    errorElement: <ErrorPage />,
     path: ROUTES.base,
   },
 ])

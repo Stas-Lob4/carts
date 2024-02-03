@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { SELECT_OPTIONS_PAGINATION } from '@/common'
 import { useDebounce } from '@/common/hooks/use-debounce'
 import { useDecksSearchParams } from '@/common/hooks/use-decks-search-params'
-import { BackButton, Cards, Page, TextField } from '@/components'
+import { BackButton, Cards, Loader, Page, TextField } from '@/components'
 import { CardsHeader } from '@/components/cards/cards-header/cards-header'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
@@ -55,7 +55,7 @@ export const Deck = () => {
   // const cardToEditId = cards?.items?.find(card => card.id === cardToEditId)
 
   if (isLoading) {
-    return
+    return <Loader />
   }
 
   return (
