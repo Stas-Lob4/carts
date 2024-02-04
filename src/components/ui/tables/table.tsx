@@ -2,6 +2,13 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import s from './table.module.scss'
 
+export type Cols = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+type ThProps = {
+  col?: Cols
+} & ComponentPropsWithoutRef<'th'>
+type TdProps = {
+  col?: Cols
+} & ComponentPropsWithoutRef<'td'>
 export const Table = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'table'>>(
   (props, ref) => {
     const { className, ...rest } = props
@@ -34,18 +41,14 @@ export const TableBody = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRe
   }
 )
 
-export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
-  (props, ref) => {
-    const { className, ...rest } = props
+export const TableHeadCell = forwardRef<ElementRef<'th'>, ThProps>((props, ref) => {
+  const { className, col, ...rest } = props
 
-    return <th {...rest} className={`${className} ${s.tableHeadCell}`} ref={ref} />
-  }
-)
+  return <th {...rest} className={`${className} ${s.tableHeadCell}`} data-col={col} ref={ref} />
+})
 
-export const TableDataCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
-  (props, ref) => {
-    const { className, ...rest } = props
+export const TableDataCell = forwardRef<ElementRef<'td'>, TdProps>((props, ref) => {
+  const { className, col, ...rest } = props
 
-    return <td {...rest} className={`${className} ${s.tableDataCell}`} ref={ref} />
-  }
-)
+  return <td {...rest} className={`${className} ${s.tableDataCell}`} data-col={col} ref={ref} />
+})

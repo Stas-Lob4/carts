@@ -1,4 +1,11 @@
-import { ChangeEvent, ComponentPropsWithoutRef, ElementType, forwardRef, useState } from 'react'
+import {
+  ChangeEvent,
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementType,
+  forwardRef,
+  useState,
+} from 'react'
 
 import { Close, Eye, Search, VisibilityOff } from '@/assets'
 import { Typography } from '@/components'
@@ -13,6 +20,7 @@ export type TextFieldProps<T extends ElementType = 'input'> = {
   errorMessage?: string
   label?: string
   onChangeValue?: (value: string) => void
+  rootContainerProps?: ComponentProps<'div'>
   search?: boolean
   type?: 'password' | 'search' | 'text'
 } & ComponentPropsWithoutRef<'input'>
@@ -26,6 +34,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       label,
       onChangeValue,
       placeholder,
+      rootContainerProps,
       search,
       type = 'text',
       ...rest
@@ -59,10 +68,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       closeButton: clsx(s.closeIcon),
       container: clsx(s.container),
       error: clsx(s.error),
-      input: clsx(s.input, !!errorMessage && s.error, isSearch),
+      input: clsx(s.input, !!errorMessage && s.error, isSearch && s.hasSearchIcon, className),
       label: clsx(s.label),
-      root: clsx(s.root),
-      searchIcon: clsx(s.searchIcon),
+      root: clsx(s.root, rootContainerProps?.className),
+      searchIcon: clsx(s.searchIcon, rest.disabled && s.disabled),
     }
 
     return (

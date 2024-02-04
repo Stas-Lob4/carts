@@ -73,6 +73,10 @@
       margin-left: 0.75rem;
 
       fill: var(--color-dark-100);
+
+      &.disabled {
+        fill: var(--color-dark-300);
+      }
     }
 
     .buttonIcon {

@@ -12,4 +12,7 @@ export * from './avatar'
 export * from './tables'
 export * from './file-uploader'
 export * from './controlled'
+export * from './rating/rating'
+export * from './back-button'
 export * from './loader'
+
