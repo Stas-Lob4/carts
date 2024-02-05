@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import { Logout, PersonOutline, PlayCircleOutline } from '@/assets'
 import { ROUTES } from '@/common'
 import {
   Avatar,
+  DropdownBasicItemContent,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -49,18 +50,17 @@ export const UserDropDown = (props: UserDropDownProps) => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuItem>
-          <PlayCircleOutline />
-          Learn
+          <DropdownBasicItemContent icon={<PlayCircleOutline />} name={'Learn'} />
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <PersonOutline />
-          My Profile
+        <DropdownMenuItem asChild>
+          <Link to={ROUTES.profile}>
+            <DropdownBasicItemContent icon={<PersonOutline />} name={'My Profile'} />
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={logout}>
-          <Logout />
-          Sign out
+          <DropdownBasicItemContent icon={<Logout />} name={'Sign out'} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenuRoot>

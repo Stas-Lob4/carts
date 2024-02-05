@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import { Header } from '@/components'
+import { Header, Loader } from '@/components'
 import { useGetMeQuery, useLogoutMutation } from '@/services'
 
 import s from './layout.module.scss'
@@ -13,9 +13,7 @@ export const Layout = () => {
   return (
     <>
       <Header isLoggedIn={isAuth} logout={logout} profile={data} />
-      <main className={s.main}>
-        {isLoading ? <div>Loading</div> : <Outlet context={{ isAuth }} />}
-      </main>
+      <main className={s.main}>{isLoading ? <Loader /> : <Outlet context={{ isAuth }} />}</main>
     </>
   )
 }

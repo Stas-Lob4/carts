@@ -32,6 +32,7 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.3",
     "react-spinners": "^0.13.8",
+    "react-toastify": "^10.0.4",
     "storybook-addon-react-router-v6": "^2.0.10",
     "zod": "^3.22.4"
   },

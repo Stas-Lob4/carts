@@ -13,8 +13,8 @@ type AvatarUploaderProps = {
   avatarUrl?: string
   className?: string
   editable?: boolean
-  name: string
-  onSubmit: (data: FormData) => void
+  name?: string
+  updateAvatar: (avatar: AvatarUploaderValue) => Promise<void>
 }
 
 const AvatarUploaderSchema = z
@@ -27,7 +27,7 @@ const AvatarUploaderSchema = z
 
 export type AvatarUploaderValue = z.infer<typeof AvatarUploaderSchema>
 export const AvatarUploader = (props: AvatarUploaderProps) => {
-  const { avatarUrl, className, editable, onSubmit } = props
+  const { avatarUrl, className, editable, updateAvatar } = props
   const fileRef = useRef<HTMLInputElement>(null)
 
   const [avatar, setAvatar] = useState<File | null>(null)
@@ -39,12 +39,10 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
 
   const { handleSubmit } = useForm<AvatarUploaderValue>()
 
-  const onSubmitHandler = () => {
-    const formData = new FormData()
-
-    if (avatarIsValid) {
-      formData.append('avatar', avatar)
-      onSubmit(formData)
+  const onSubmitHandler = async (avatar: File | null) => {
+    if (avatar) {
+      await updateAvatar(avatar)
+      setAvatar(avatar)
     }
   }
 
@@ -67,7 +65,7 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
           <FileUploader
             className={classNames.uploader}
             ref={fileRef}
-            setFile={setAvatar}
+            setFile={onSubmitHandler}
             trigger={
               <Button as={'span'} className={classNames.editAvatar}>
                 <EditAvatar />
