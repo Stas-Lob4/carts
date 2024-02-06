@@ -1,7 +1,10 @@
 export const ROUTES = {
   base: '/',
+  checkEmail: '/check-email',
+  createPassword: '/create-password/:token',
   decks: '/decks',
   profile: '/profile',
-  signIn: './sign-in',
-  signUp: './sign-up',
+  reset: '/reset-password',
+  signIn: '/sign-in',
+  signUp: '/sign-up',
 } as const

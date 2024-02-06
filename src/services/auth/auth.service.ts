@@ -1,6 +1,6 @@
 import { baseApi } from '@/services'
 
-import { LoginArgs, RecoverPasswordArgs, ResendCheckEmailArgs, SignUpArgs, User } from '.'
+import { LogInArgs, RecoverPasswordArgs, ResendCheckEmailArgs, SignUpArgs, User } from '.'
 
 const authService = baseApi.injectEndpoints({
   endpoints: builder => {
@@ -19,7 +19,7 @@ const authService = baseApi.injectEndpoints({
         providesTags: ['Me'],
         query: () => '/v1/auth/me',
       }),
-      login: builder.mutation<void, LoginArgs>({
+      logIn: builder.mutation<void, LogInArgs>({
         invalidatesTags: ['Me'],
         query: arg => ({
           body: arg,
@@ -27,7 +27,7 @@ const authService = baseApi.injectEndpoints({
           url: '/v1/auth/login',
         }),
       }),
-      logout: builder.mutation<void, void>({
+      logOut: builder.mutation<void, void>({
         invalidatesTags: ['Me'],
         query: () => ({
           method: 'POST',
@@ -38,13 +38,13 @@ const authService = baseApi.injectEndpoints({
         query: arg => ({
           body: arg,
           method: 'POST',
-          url: '.v1/auth/recover-password',
+          url: '/v1/auth/recover-password',
         }),
       }),
-      resetCheckEmail: builder.mutation<void, ResendCheckEmailArgs>({
+      resendCheckEmail: builder.mutation<void, ResendCheckEmailArgs>({
         query: arg => ({ body: arg, method: 'POST', url: '/v1/auth/resend-verification-email' }),
       }),
-      resetPassword: builder.mutation<void, { password: string; token: string }>({
+      resetPassword: builder.mutation<void, { password: string; token?: string }>({
         query: ({ password, token }) => ({
           body: { password },
           method: 'POST',
@@ -59,7 +59,7 @@ const authService = baseApi.injectEndpoints({
         query: arg => ({
           body: arg,
           method: 'PATCH',
-          url: '/v1/aut/me',
+          url: '/v1/auth/me',
         }),
       }),
     }
@@ -70,10 +70,10 @@ export const {
   useCheckEmailMutation,
   useCreateAccessTokenMutation,
   useGetMeQuery,
-  useLoginMutation,
-  useLogoutMutation,
+  useLogInMutation,
+  useLogOutMutation,
   useRecoverPasswordMutation,
-  useResetCheckEmailMutation,
+  useResendCheckEmailMutation,
   useResetPasswordMutation,
   useSignUpMutation,
   useUpdateProfileMutation,
