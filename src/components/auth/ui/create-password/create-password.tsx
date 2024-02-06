@@ -1,5 +1,5 @@
 import { Button, Card, ControlledTextField, Typography } from '@/components'
-import { CreatePasswordFormValues, useCreatePassword } from '@/components/auth/lib'
+import { CreatePasswordFormValues, useCreatePassword } from '@/components/auth'
 
 import s from './create-password.module.scss'
 
@@ -7,7 +7,7 @@ type Props = {
   onSubmit: (data: CreatePasswordFormValues) => void
 }
 
-export const CreatePasswordForm = ({ onSubmit }: Props) => {
+export const CreatePassword = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { errors },

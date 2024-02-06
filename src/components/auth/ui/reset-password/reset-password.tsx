@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/common'
 import { Button, Card, ControlledTextField, Typography } from '@/components'
-import { ResetPasswordFormValues, useResetPassword } from '@/components/auth/lib'
+import { ResetPasswordFormValues, useResetPassword } from '@/components/auth'
 
 import s from './reset-password.module.scss'
 
@@ -10,7 +10,7 @@ type Props = {
   onSubmit: (data: ResetPasswordFormValues) => void
 }
 
-export const ResetPasswordForm = ({ onSubmit }: Props) => {
+export const ResetPassword = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { errors },

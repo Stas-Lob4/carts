@@ -1,11 +1,11 @@
-import { CreatePasswordForm } from '@/components'
+import { CreatePassword } from '@/components'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-  component: CreatePasswordForm,
+  component: CreatePassword,
   tags: ['autodocs'],
-  title: 'Features/Auth/Create Password Form',
-} satisfies Meta<typeof CreatePasswordForm>
+  title: 'Features/Auth/Create Password',
+} satisfies Meta<typeof CreatePassword>
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/common'
 import { Button, Card, ControlledCheckbox, ControlledTextField, Typography } from '@/components'
-import { SignInFormValues, useSignIn } from '@/components/auth/lib'
+import { SignInFormValues, useSignIn } from '@/components/auth'
 
 import s from './sign-in.module.scss'
 
@@ -39,7 +39,7 @@ export const SignIn = ({ onSubmit }: Props) => {
           type={'password'}
         />
         <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-        <Typography as={Link} to={'/reset-password'} variant={'body2'}>
+        <Typography as={Link} to={ROUTES.reset} variant={'body2'}>
           Forgot Password?
         </Typography>
         <Button fullWidth type={'submit'}>

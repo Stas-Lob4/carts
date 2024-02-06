@@ -7,10 +7,10 @@ import { Button, Card, Typography } from '@/components'
 import s from './check-email.module.scss'
 
 type Props = {
-  userEmail: string
+  email?: string
 }
 
-export const CheckEmail = ({ userEmail }: Props) => {
+export const CheckEmail = ({ email }: Props) => {
   return (
     <Card className={s.card}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
@@ -19,7 +19,7 @@ export const CheckEmail = ({ userEmail }: Props) => {
       <div className={s.info}>
         <Email />
         <Typography variant={'body2'}>
-          We’ve sent an Email with instructions <br /> to {userEmail}
+          We’ve sent an email with instructions <br /> to {email}
         </Typography>
       </div>
       <Button as={Link} fullWidth to={ROUTES.signIn}>

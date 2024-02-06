@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/common'
 import { Button, Card, ControlledTextField, Typography } from '@/components'
-import { SignUpFormValues, useSignUp } from '@/components/auth/lib'
+import { SignUpFormValues, useSignUp } from '@/components/auth'
 
 import s from './sign-up.module.scss'
 

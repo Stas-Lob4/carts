@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { SignInFormValues, signInSchema } from '@/components/auth/lib'
+import { SignInFormValues, signInSchema } from '@/components/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 export const useSignIn = () =>
