@@ -18,7 +18,7 @@ export const CreatePasswordPage = () => {
 
     try {
       await resetPassword({ password, token }).unwrap()
-      toast.success('Try to sign in with your new password')
+      toast.success('Your password has been changed successfully')
       navigate(ROUTES.signIn)
     } catch (e: any) {
       toast.error(e?.data?.message ?? 'Some error occurred')

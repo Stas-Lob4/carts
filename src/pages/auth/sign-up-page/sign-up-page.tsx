@@ -12,7 +12,7 @@ export const SignUpPage = () => {
   const signUpHandler = async ({ email, password }: SignUpArgs) => {
     try {
       await signUp({ email, password }).unwrap()
-      toast.success('Your account has been successfully created. You can sign in now')
+      toast.success('Your account has been created successfully. You can sign in now')
       navigate(ROUTES.signIn)
     } catch (e: any) {
       toast.error(e?.data?.message ?? 'Some error occurred while signing up')

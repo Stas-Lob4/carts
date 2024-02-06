@@ -12,8 +12,8 @@ export const ResetPasswordPage = () => {
   const resetPasswordHandler = async ({ email }: RecoverPasswordArgs) => {
     const payload = {
       email,
-      html: '<h1>Hi, ##name##</h1><p>Click <a href=`http://localhost:5173/create-password/##token##`>here</a> to reset your password</p>',
-      // html: `<!--<h1>Hi, ##name##</h1><p>Click <a href="${window.location.origin}/create-password/##token##">here</a> to reset your password</p>-->`,
+      // html: '<h1>Hi, ##name##</h1><p>Click <a href=`http://localhost:5173/create-password/##token##`>here</a> to reset your password</p>',
+      html: `<h1>Hi, ##name##</h1><p>Click <a href="${window.location.origin}/create-password/##token##">here</a> to reset your password</p>`,
       subject: 'Password recovery',
     }
 
