@@ -5,6 +5,6 @@ export const ROUTES = {
   decks: '/decks',
   profile: '/profile',
   reset: '/reset-password',
-  signIn: './sign-in',
-  signUp: './sign-up',
+  signIn: '/sign-in',
+  signUp: '/sign-up',
 } as const

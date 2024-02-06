@@ -1,5 +1,5 @@
 export type User = {
-  avatar: string
+  avatar: null | string
   created: string
   email: string
   id: string
@@ -8,7 +8,7 @@ export type User = {
   updated: string
 }
 
-export type LoginArgs = {
+export type LogInArgs = {
   email: string
   password: string
   rememberMe?: boolean
