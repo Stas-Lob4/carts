@@ -8,6 +8,8 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
+import { ErrorPage } from '@/pages'
+import { Profile } from '@/pages/profile/profile'
 
 const publicRouter: RouteObject[] = [
   {
@@ -31,6 +33,10 @@ const privateRouter: RouteObject[] = [
     element: <div>Deck</div>,
     path: ROUTES.decks,
   },
+  {
+    element: <Profile />,
+    path: ROUTES.profile,
+  },
 ]
 
 const router = createBrowserRouter([
@@ -43,6 +49,7 @@ const router = createBrowserRouter([
       },
     ],
     element: <Layout />,
+    errorElement: <ErrorPage />,
     path: ROUTES.base,
   },
 ])

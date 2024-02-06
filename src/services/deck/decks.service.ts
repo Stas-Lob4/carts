@@ -1,4 +1,5 @@
 import { baseApi } from '@/services'
+import { CardsResponse, GetCardsArgs } from '@/services/carts/carts.types'
 import {
   CreateDeckArgs,
   Deck,
@@ -25,6 +26,9 @@ export const DecksService = baseApi.injectEndpoints({
           url: `v1/decks/${args.id}`,
         }),
       }),
+      getDeckCarts: builder.query<CardsResponse, { arg: GetCardsArgs; id: string }>({
+        query: ({ arg, id }) => ({ params: arg ? arg : undefined, url: `v1/decks/${id}/cards` }),
+      }),
       getDecks: builder.query<DeckResponse, GetDecksArgs | void>({
         providesTags: ['Decks'],
         query: arg => ({
@@ -32,6 +36,26 @@ export const DecksService = baseApi.injectEndpoints({
           url: `v2/decks`,
         }),
       }),
+      getOneDeck: builder.query<Deck, { id: string }>({
+        query: ({ id }) => `v1/decks/${id}`,
+      }),
+      updateDeck: builder.mutation<Deck, { data: FormData; id: string }>({
+        invalidatesTags: ['Decks'],
+        query: ({ data, id }) => ({
+          body: data,
+          method: 'PATCH',
+          url: `v1/decks/${id}`,
+        }),
+      }),
     }
   },
 })
+
+export const {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDeckCartsQuery,
+  useGetDecksQuery,
+  useGetOneDeckQuery,
+  useUpdateDeckMutation,
+} = DecksService

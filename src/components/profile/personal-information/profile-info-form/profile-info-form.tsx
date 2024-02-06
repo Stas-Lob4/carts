@@ -18,7 +18,7 @@ type ProfileInfoFormProps = {
   className?: string
   deactivateEditMode: () => void
   initialValue?: ProfileInfoFormValues
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: ProfileInfoFormValues) => void
 }
 export const ProfileInfoForm = (props: ProfileInfoFormProps) => {
   const { className, deactivateEditMode, initialValue, onSubmit } = props
@@ -32,11 +32,7 @@ export const ProfileInfoForm = (props: ProfileInfoFormProps) => {
   })
 
   const onSubmitHandler = (data: ProfileInfoFormValues) => {
-    const formData = new FormData()
-
-    formData.append('userbane', data.name)
-    console.log('profileFORM', data.name)
-    onSubmit(formData)
+    onSubmit(data)
     deactivateEditMode()
   }
 

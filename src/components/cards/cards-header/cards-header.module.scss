@@ -1,0 +1,42 @@
+.headerWrapper {
+  margin-bottom: 1.563rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 0.563rem;
+  align-items: center;
+}
+
+.iconTrigger {
+  transform: rotate(90deg);
+  border: 0.063rem solid var(--color-light-100);
+  border-radius: 50%;
+  transition: all 0.2s linear;
+
+  &:hover {
+    border: 0.063rem solid var(--color-accent-500);
+    fill: var(--color-accent-500);
+  }
+}
+
+.iconButton {
+  &:hover {
+    fill: var(--color-accent-500);
+  }
+}
+
+.deckImage {
+  aspect-ratio: 3/2;
+  width: 10.625rem;
+  height: 6.688rem;
+  margin-top: 0.938rem;
+
+  object-fit: cover;
+}
