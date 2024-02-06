@@ -5,3 +5,5 @@ export type ProfileData =
       name: string
     }
   | undefined
+
+export type Grade = { grade: string }

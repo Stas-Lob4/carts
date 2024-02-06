@@ -8,7 +8,7 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
-import { ErrorPage } from '@/pages'
+import { ErrorPage, Learn } from '@/pages'
 import { Profile } from '@/pages/profile/profile'
 
 const publicRouter: RouteObject[] = [
@@ -30,12 +30,16 @@ const privateRouter: RouteObject[] = [
     path: ROUTES.base,
   },
   {
-    element: <div>Deck</div>,
+    element: <div>Decks</div>,
     path: ROUTES.decks,
   },
   {
     element: <Profile />,
     path: ROUTES.profile,
+  },
+  {
+    element: <Learn />,
+    path: `${ROUTES.decks}/:id${ROUTES.learn}`,
   },
 ]
 
