@@ -8,7 +8,14 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
-import { ErrorPage } from '@/pages'
+import {
+  CheckEmailPage,
+  CreatePasswordPage,
+  ErrorPage,
+  ResetPasswordPage,
+  SignInPage,
+  SignUpPage,
+} from '@/pages'
 import { Profile } from '@/pages/profile/profile'
 
 const publicRouter: RouteObject[] = [
