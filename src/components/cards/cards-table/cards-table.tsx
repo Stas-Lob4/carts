@@ -10,7 +10,7 @@ import {
   TableRow,
   Typography,
 } from '@/components'
-import { Card } from '@/services/carts/carts.types'
+import { CardType } from '@/services/carts/carts.types'
 import { clsx } from 'clsx'
 
 import s from './cards-table.module.scss'
@@ -51,7 +51,7 @@ const colums: Column[] = [
 ]
 
 type CardsTableProps = {
-  cards: Card[] | undefined
+  cards: CardType[] | undefined
   isOwner?: boolean
   onSort: (key: Sort) => void
   setCardToDeleteId?: (id: string) => void

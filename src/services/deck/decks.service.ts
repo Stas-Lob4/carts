@@ -1,5 +1,5 @@
 import { baseApi } from '@/services'
-import { Card, CardsResponse, GetCardsArgs } from '@/services/carts/carts.types'
+import { CardType, CardsResponse, GetCardsArgs } from '@/services/carts/carts.types'
 import {
   CreateDeckArgs,
   Deck,
@@ -40,14 +40,14 @@ export const DecksService = baseApi.injectEndpoints({
       getOneDeck: builder.query<Deck, { id: string }>({
         query: ({ id }) => `v1/decks/${id}`,
       }),
-      getRandomCard: builder.query<Card, { args?: GetCardsArgs; id: string }>({
+      getRandomCard: builder.query<CardType, { args?: GetCardsArgs; id: string }>({
         providesTags: ['Cards'],
         query: args => ({
           params: args ? args : undefined,
           url: 'v2/decks',
         }),
       }),
-      gradeCard: builder.mutation<Card, { args: GradeCardArg; id: string }>({
+      gradeCard: builder.mutation<CardType, { args: GradeCardArg; id: string }>({
         invalidatesTags: ['Decks'],
         query: ({ args, id }) => ({
           body: args,

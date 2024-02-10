@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { Grade } from '@/common'
 import { BackButton, Loader, Page } from '@/components'
+import { LearnCard } from '@/components/learn-card/learn-card'
 import { useGetOneDeckQuery, useGetRandomCardQuery, useGradeCardMutation } from '@/services/deck'
 
 export const Learn = () => {
@@ -42,7 +43,7 @@ export const Learn = () => {
   return (
     <Page>
       <BackButton text={'Back to Decks List'} />
-      {deck && card && <div>LearnCard</div>}
+      {deck && card && <LearnCard card={card} deckName={deck.name} onSubmit={onSubmit} />}
       {isLoading && <Loader />}
     </Page>
   )

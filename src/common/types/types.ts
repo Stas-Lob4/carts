@@ -7,3 +7,8 @@ export type ProfileData =
   | undefined
 
 export type Grade = { grade: string }
+
+export type Option = {
+  label: string
+  value: string
+}
