@@ -8,13 +8,37 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
-import { ErrorPage, Learn } from '@/pages'
+
+import {
+  CheckEmailPage,
+  CreatePasswordPage,
+  ErrorPage,
+  ResetPasswordPage,
+  SignInPage,
+  SignUpPage,
+} from '@/pages'
 import { Profile } from '@/pages/profile/profile'
 
 const publicRouter: RouteObject[] = [
   {
-    element: <div>Sign-in</div>,
+    element: <SignInPage />,
     path: ROUTES.signIn,
+  },
+  {
+    element: <SignUpPage />,
+    path: ROUTES.signUp,
+  },
+  {
+    element: <ResetPasswordPage />,
+    path: ROUTES.reset,
+  },
+  {
+    element: <CheckEmailPage />,
+    path: ROUTES.checkEmail,
+  },
+  {
+    element: <CreatePasswordPage />,
+    path: ROUTES.createPassword,
   },
 ]
 

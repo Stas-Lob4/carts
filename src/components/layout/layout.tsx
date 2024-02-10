@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom'
 
 import { Header, Loader } from '@/components'
-import { useGetMeQuery, useLogoutMutation } from '@/services'
+import { useGetMeQuery, useLogOutMutation } from '@/services'
 
 import s from './layout.module.scss'
 
 export const Layout = () => {
   const { data, isError, isLoading } = useGetMeQuery()
-  const [logout] = useLogoutMutation()
+  const [logout] = useLogOutMutation()
   const isAuth = !isError
 
   return (

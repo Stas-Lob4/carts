@@ -8,10 +8,10 @@ export type User = {
   updated: string
 }
 
-export type LoginArgs = {
+export type LogInArgs = {
   email: string
   password: string
-  rememberMe: boolean
+  rememberMe?: boolean
 }
 
 export type SignUpArgs = {

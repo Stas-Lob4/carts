@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 420px;
+  padding: 37px 36px 44px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  align-items: center;
+
+  margin: 27px 0 65px;
+
+  & > p {
+    color: var(--color-light-900);
+    text-align: center;
+    opacity: 0.5;
+  }
+}
