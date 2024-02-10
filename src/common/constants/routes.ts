@@ -3,6 +3,7 @@ export const ROUTES = {
   checkEmail: '/check-email',
   createPassword: '/create-password/:token',
   decks: '/decks',
+  learn: './learn',
   profile: '/profile',
   reset: '/reset-password',
   signIn: '/sign-in',

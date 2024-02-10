@@ -1,11 +1,11 @@
 import { Button, Typography } from '@/components'
 import { CardsTable, Sort } from '@/components/cards/cards-table/cards-table'
-import { Card } from '@/services/carts/carts.types'
+import { CardType } from '@/services/carts/carts.types'
 
 import s from './cards.module.scss'
 
 type CardProps = {
-  cards: Card[] | undefined
+  cards: CardType[] | undefined
   isEmpty?: boolean
   isOwner?: boolean
   onSort: (key: Sort) => void

@@ -1,19 +1,17 @@
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
+import { Option } from '@/common'
 import { Typography } from '@/components'
 import * as Radio from '@radix-ui/react-radio-group'
 
 import s from './radioGroup.module.scss'
 
-export type Option = { title: string; value: string }
-
 export type RadioGroupProps = {
-  errorMessage?: string
   options: Option[]
 } & Omit<ComponentPropsWithoutRef<typeof Radio.Root>, 'children'>
 
 export const RadioGroup = forwardRef<React.ElementRef<typeof Radio.Root>, RadioGroupProps>(
-  ({ errorMessage, options, ...rest }: RadioGroupProps) => {
+  ({ options, ...rest }: RadioGroupProps) => {
     return (
       <form>
         <Radio.Root className={s.radioGroupRoot} defaultValue={options[0].value} {...rest}>
@@ -23,7 +21,7 @@ export const RadioGroup = forwardRef<React.ElementRef<typeof Radio.Root>, RadioG
                 <Radio.Indicator className={s.indicator} />
               </Radio.Item>
               <Typography as={'label'} className={s.label} htmlFor={el.value} variant={'body2'}>
-                {el.title}
+                {el.label}
               </Typography>
             </div>
           ))}
