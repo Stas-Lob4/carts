@@ -9,13 +9,13 @@ export const useDecksSearchParams = () => {
   const sortDirection = searchParams.get('sortDirection') || null
   const itemsPerPage = Number(searchParams.get('items')) || 10
   const minCards = Number(searchParams.get('minCards')) || 0
-  const maxCards = Number(searchParams.get('maxCards')) || 50
+  const maxCards = Number(searchParams.get('maxCards')) || 60
   const page = Number(searchParams.get('page')) || 1
   const value = searchParams.get('value')
 
   const [rangeValue, setRangeValue] = useState<number[]>([minCards, maxCards])
   const changeMinMaxCard = (values: number[]) => {
-    if (values[0] !== 0 || values[1] !== 50) {
+    if (values[0] !== 0 || values[1] !== 60) {
       searchParams.set('minCards', values[0].toString())
       searchParams.set('maxCards', values[1].toString())
     } else {

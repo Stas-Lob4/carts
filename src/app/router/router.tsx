@@ -10,6 +10,8 @@ import { ROUTES } from '@/common'
 import { Layout } from '@/components'
 import { ErrorPage } from '@/pages'
 
+import { Decks } from '../decks/decks'
+
 const publicRouter: RouteObject[] = [
   {
     element: <div>Sign-in</div>,
@@ -29,7 +31,7 @@ const privateRouter: RouteObject[] = [
     path: ROUTES.base,
   },
   {
-    element: <div>Deck</div>,
+    element: <Decks />,
     path: ROUTES.decks,
   },
 ]
