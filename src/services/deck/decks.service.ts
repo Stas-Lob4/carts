@@ -16,6 +16,7 @@ export const DecksService = baseApi.injectEndpoints({
         invalidatesTags: ['Decks'],
         query: arg => ({
           body: arg,
+          formData: true,
           method: 'POST',
           url: `v1/decks`,
         }),

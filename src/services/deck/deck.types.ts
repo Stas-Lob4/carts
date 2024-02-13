@@ -30,11 +30,7 @@ export type GetDecksArgs = {
   orderBy?: null | string
 }
 
-export type CreateDeckArgs = {
-  cover?: File | null
-  isPrivate?: boolean
-  name: string
-}
+export type CreateDeckArgs = FormData
 
 export type GradeCardArg = { cardId: string; grade: CardGrade }
 export type GetRandomCardArg = { previousCardId: string }

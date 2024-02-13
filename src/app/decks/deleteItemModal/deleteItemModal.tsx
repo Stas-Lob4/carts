@@ -5,7 +5,7 @@ import { DialogClose } from '@radix-ui/react-dialog'
 import s from './deleteItem.module.scss'
 
 type DeleteModalProps = {
-  deleteCallback: (id: string) => void
+  deleteCallback: () => void
   id: string
   modalName: string
   title: string
@@ -25,9 +25,8 @@ export const DeleteItemModal = (props: DeleteModalProps) => {
           </DialogClose>
           <Button
             onClick={() => {
-              props.deleteCallback
+              props.deleteCallback()
             }}
-            type={'submit'}
           >
             Delete {props.modalName}
           </Button>

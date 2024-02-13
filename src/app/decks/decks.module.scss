@@ -1,10 +1,10 @@
-.body {
+ .body {
     box-sizing: content-box;
     max-width: 1010px;
     margin: 0 auto;
-    padding-block: 96px 30px;
+    padding-block: 30px 30px;
     padding-inline: 12px;
-}
+} 
 
 .cardsParameters {
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 .table {
-    width: 1006px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -53,25 +53,9 @@
     margin-top: 64px;
 }
 
-.tableDataRow {
-    transition: .3s;
-    &:hover{background-color: var(--color-dark-700);}
-}
-
-.deckInfo {
-    display: flex;
-    gap: 20px;
-    align-items:center;
-}
 
 
-.deckName {
-    text-decoration: none;
 
-    &:hover{
-        color: var( --color-accent-100);
-        text-decoration: underline
-    }
-}
+
 
 

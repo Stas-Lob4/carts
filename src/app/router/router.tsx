@@ -19,6 +19,8 @@ import {
 } from '@/pages'
 import { Profile } from '@/pages/profile/profile'
 
+import { Decks } from '../decks/decks'
+
 const publicRouter: RouteObject[] = [
   {
     element: <SignInPage />,
@@ -54,6 +56,7 @@ const privateRouter: RouteObject[] = [
     path: ROUTES.base,
   },
   {
+    element: <Decks />,
     element: <div>Decks</div>,
     path: ROUTES.decks,
   },

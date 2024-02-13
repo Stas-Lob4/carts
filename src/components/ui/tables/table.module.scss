@@ -1,6 +1,6 @@
 
 .icon {
-   padding-left: 10px;
+   margin-left: 10px;
 }
 
 .root {
@@ -12,6 +12,9 @@
 
 .tableRow {
     border-bottom: 1px solid var(--color-dark-500);
+    transition: .3s;
+    &:hover{background-color: var(--color-dark-700);}
+   
 }
 
 .tableHead {
@@ -33,3 +36,4 @@
     align-items:center;
     
 }
+

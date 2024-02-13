@@ -1,5 +1,8 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import ArrowDownSecond from '@/assets/icons/ArrowDownSecond'
+import ArrowUp from '@/assets/icons/arrowUp'
+
 import s from './table.module.scss'
 
 export type Cols = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
@@ -52,3 +55,61 @@ export const TableDataCell = forwardRef<ElementRef<'td'>, TdProps>((props, ref) 
 
   return <td {...rest} className={`${className} ${s.tableDataCell}`} data-col={col} ref={ref} />
 })
+
+export type Column = {
+  key: string
+  sortable?: boolean
+  title: string
+}
+export type Sort = {
+  direction: 'asc' | 'desc'
+  key: string
+} | null
+
+type TableHeaderProps = {
+  columns: Column[]
+  onSort?: (sort: Sort) => void
+  sort?: Sort
+} & Omit<ComponentPropsWithoutRef<'thead'>, 'children'>
+
+export const TableHeader = ({ columns, onSort, sort, ...restProps }: TableHeaderProps) => {
+  const handleSort = (key: string, sortable?: boolean) => () => {
+    if (!onSort || !sortable) {
+      return
+    }
+
+    if (sort?.key !== key) {
+      return onSort({ direction: 'asc', key })
+    }
+
+    if (sort.direction === 'desc') {
+      return onSort(null)
+    }
+
+    return onSort({
+      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
+      key,
+    })
+  }
+
+  return (
+    <TableHead {...restProps}>
+      <TableRow>
+        {columns.map(({ key, sortable = true, title }) => (
+          <TableHeadCell key={key} onClick={handleSort(key, sortable)}>
+            {title}
+            {sort && sort.key === key && (
+              <span>
+                {sort.direction === 'asc' ? (
+                  <ArrowUp className={s.icon} />
+                ) : (
+                  <ArrowDownSecond className={s.icon} />
+                )}
+              </span>
+            )}
+          </TableHeadCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  )
+}
