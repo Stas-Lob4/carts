@@ -1,5 +1,5 @@
 export * from './ui'
-export * from './auth'
+export * from './auth/ui'
 export * from './profile'
 export * from './layout'
 export * from './page/page'

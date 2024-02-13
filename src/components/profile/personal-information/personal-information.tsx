@@ -1,36 +1,40 @@
 import { useState } from 'react'
 
 import { Card, Typography } from '@/components'
-import { AvatarUploader } from '@/components/profile/personal-information/avatar-uploader'
+import {
+  AvatarUploader,
+  AvatarUploaderValue,
+} from '@/components/profile/personal-information/avatar-uploader'
 import { ProfileInfo } from '@/components/profile/personal-information/profile-info/profile-info'
-import { ProfileInfoForm } from '@/components/profile/personal-information/profile-info-form/profile-info-form'
+import {
+  ProfileInfoForm,
+  ProfileInfoFormValues,
+} from '@/components/profile/personal-information/profile-info-form/profile-info-form'
+import { User } from '@/services'
 import { clsx } from 'clsx'
 
 import s from './personal-information.module.scss'
 
-type ProfileData = {
-  avatar?: string
-  email: string
-  username: string
-}
+// type ProfileData = {
+//   avatar?: string
+//   email: string
+//   username: string
+// }
 
 type PersonalInformationProps = {
   className?: string
-  data: ProfileData
+  data?: User
   logout: () => void
-  updateProfile: (data: FormData) => void
+  updateAvatar: (avatar: AvatarUploaderValue) => Promise<void>
+  updateProfile: (data: ProfileInfoFormValues) => void
 }
 export const PersonalInformation = (props: PersonalInformationProps) => {
-  const { className, data, logout } = props
+  const { className, data, logout, updateAvatar, updateProfile } = props
 
   const [editMode, setEditMode] = useState(false)
   const activateEditMode = () => setEditMode(true)
 
   const deactivateEditMode = () => setEditMode(false)
-
-  const onSubmitHandler = (data: FormData) => {
-    console.log(data)
-  }
 
   const logoutHandler = () => {
     logout()
@@ -47,23 +51,23 @@ export const PersonalInformation = (props: PersonalInformationProps) => {
         Personal Information
       </Typography>
       <AvatarUploader
-        avatarUrl={data.avatar}
+        avatarUrl={data?.avatar}
         editable={!editMode}
-        name={data.username}
-        onSubmit={onSubmitHandler}
+        name={data?.name}
+        updateAvatar={updateAvatar}
       />
       {editMode ? (
         <ProfileInfoForm
           deactivateEditMode={deactivateEditMode}
-          initialValue={{ name: data.username }}
-          onSubmit={onSubmitHandler}
+          initialValue={{ name: data?.name ? data?.name : '' }}
+          onSubmit={updateProfile}
         />
       ) : (
         <ProfileInfo
           activeEditMode={activateEditMode}
-          email={data.email}
+          email={data?.email}
           logout={logoutHandler}
-          username={data.username}
+          username={data?.name}
         />
       )}
     </Card>

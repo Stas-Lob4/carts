@@ -1,3 +1,4 @@
+import { CardGrade } from '@/common'
 import { PaginatedResponse } from '@/services'
 
 export type DeckResponse = PaginatedResponse<Deck[]>
@@ -30,6 +31,9 @@ export type GetDecksArgs = {
 }
 
 export type CreateDeckArgs = FormData
+
+export type GradeCardArg = { cardId: string; grade: CardGrade }
+export type GetRandomCardArg = { previousCardId: string }
 
 export type DeleteDeckArgs = {
   id: string

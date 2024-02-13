@@ -1,11 +1,12 @@
 import { baseApi } from '@/services'
-import { CardsResponse, GetCardsArgs } from '@/services/carts/carts.types'
+import { CardType, CardsResponse, GetCardsArgs } from '@/services/carts/carts.types'
 import {
   CreateDeckArgs,
   Deck,
   DeckResponse,
   DeleteDeckArgs,
   GetDecksArgs,
+  GradeCardArg,
 } from '@/services/deck/deck.types'
 
 export const DecksService = baseApi.injectEndpoints({
@@ -40,6 +41,21 @@ export const DecksService = baseApi.injectEndpoints({
       getOneDeck: builder.query<Deck, { id: string }>({
         query: ({ id }) => `v1/decks/${id}`,
       }),
+      getRandomCard: builder.query<CardType, { args?: GetCardsArgs; id: string }>({
+        providesTags: ['Cards'],
+        query: args => ({
+          params: args ? args : undefined,
+          url: 'v2/decks',
+        }),
+      }),
+      gradeCard: builder.mutation<CardType, { args: GradeCardArg; id: string }>({
+        invalidatesTags: ['Decks'],
+        query: ({ args, id }) => ({
+          body: args,
+          method: 'POST',
+          url: `v1/decks/${id}/learn`,
+        }),
+      }),
       updateDeck: builder.mutation<Deck, { data: FormData; id: string }>({
         invalidatesTags: ['Decks'],
         query: ({ data, id }) => ({
@@ -58,5 +74,7 @@ export const {
   useGetDeckCartsQuery,
   useGetDecksQuery,
   useGetOneDeckQuery,
+  useGetRandomCardQuery,
+  useGradeCardMutation,
   useUpdateDeckMutation,
 } = DecksService

@@ -8,14 +8,39 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
-import { ErrorPage } from '@/pages'
+
+import {
+  CheckEmailPage,
+  CreatePasswordPage,
+  ErrorPage,
+  ResetPasswordPage,
+  SignInPage,
+  SignUpPage,
+} from '@/pages'
+import { Profile } from '@/pages/profile/profile'
 
 import { Decks } from '../decks/decks'
 
 const publicRouter: RouteObject[] = [
   {
-    element: <div>Sign-in</div>,
+    element: <SignInPage />,
     path: ROUTES.signIn,
+  },
+  {
+    element: <SignUpPage />,
+    path: ROUTES.signUp,
+  },
+  {
+    element: <ResetPasswordPage />,
+    path: ROUTES.reset,
+  },
+  {
+    element: <CheckEmailPage />,
+    path: ROUTES.checkEmail,
+  },
+  {
+    element: <CreatePasswordPage />,
+    path: ROUTES.createPassword,
   },
 ]
 
@@ -32,7 +57,16 @@ const privateRouter: RouteObject[] = [
   },
   {
     element: <Decks />,
+    element: <div>Decks</div>,
     path: ROUTES.decks,
+  },
+  {
+    element: <Profile />,
+    path: ROUTES.profile,
+  },
+  {
+    element: <Learn />,
+    path: `${ROUTES.decks}/:id${ROUTES.learn}`,
   },
 ]
 
