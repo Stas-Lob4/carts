@@ -8,18 +8,17 @@ import {
 
 import { ROUTES } from '@/common'
 import { Layout } from '@/components'
-
 import {
   CheckEmailPage,
   CreatePasswordPage,
+  Decks,
   ErrorPage,
+  Learn,
   ResetPasswordPage,
   SignInPage,
   SignUpPage,
 } from '@/pages'
 import { Profile } from '@/pages/profile/profile'
-
-import { Decks } from '../decks/decks'
 
 const publicRouter: RouteObject[] = [
   {
@@ -57,7 +56,6 @@ const privateRouter: RouteObject[] = [
   },
   {
     element: <Decks />,
-    element: <div>Decks</div>,
     path: ROUTES.decks,
   },
   {
