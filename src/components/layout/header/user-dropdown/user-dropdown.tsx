@@ -35,13 +35,13 @@ export const UserDropDown = (props: UserDropDownProps) => {
         </NavLink>
         <DropdownMenuTrigger asChild>
           <button className={s.trigger}>
-            <Avatar src={avatar} />
+            <Avatar name={userName} src={avatar} />
           </button>
         </DropdownMenuTrigger>
       </div>
       <DropdownMenuContent>
         <DropdownMenuLabel>
-          <Avatar src={avatar} />
+          <Avatar name={userName} src={avatar} />
           <div>
             <Typography variant={'subtitle2'}>{userName}</Typography>
             <Typography className={s.email} variant={'caption'}>

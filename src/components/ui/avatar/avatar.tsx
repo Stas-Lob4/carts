@@ -1,24 +1,39 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import userAva from '@/assets/images/userAva.svg'
+import { Typography } from '@/components'
+import * as Ava from '@radix-ui/react-avatar'
 import clsx from 'clsx'
 
-import s from './avatar.module.css'
+import s from './avatar.module.scss'
 
-export type AvatarProps = ComponentPropsWithoutRef<'img'> & {
+export type AvatarProps = {
   name?: string
-  size?: string
-}
+  src?: string
+} & ComponentPropsWithoutRef<typeof Ava.Root>
 
-export const Avatar = ({ className, name, size = '36px', src, ...rest }: AvatarProps) => {
-  return (
-    <img
-      alt={`${name} avatar`}
-      className={clsx(className, s.avatar)}
-      height={size}
-      src={src || userAva}
-      width={size}
-      {...rest}
-    />
-  )
-}
+export const Avatar = forwardRef<ElementRef<typeof Ava.Root>, AvatarProps>(
+  ({ className, name, src, ...rest }, ref) => {
+    let fallBackTitle
+    const arrayFromName = name?.split(/[\s_-]/)
+
+    if (arrayFromName?.length === 1) {
+      fallBackTitle = arrayFromName.join().slice(0, 2).toUpperCase()
+    } else {
+      fallBackTitle = arrayFromName
+        ?.map(w => w.charAt(0))
+        .join(' ')
+        .toUpperCase()
+    }
+
+    return (
+      <Ava.Root className={clsx(className, s.root)} ref={ref} {...rest}>
+        <Ava.Image alt={`${name || null} avatar`} className={s.avatar} src={src} />
+        {!src && (
+          <Ava.Fallback className={s.fallback}>
+            <Typography variant={'overline'}>{fallBackTitle}</Typography>
+          </Ava.Fallback>
+        )}
+      </Ava.Root>
+    )
+  }
+)
