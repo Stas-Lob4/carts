@@ -56,7 +56,7 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {isEmpty && (
+                {!isEmpty && (
                   <>
                     <DropdownMenuItem asChild>
                       <Link to={toLearnLink}>

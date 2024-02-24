@@ -8,7 +8,7 @@ import {
   TableRow,
   Typography,
 } from '@/components'
-import { CardType } from '@/services/carts/carts.types'
+import { CardType } from '@/services/cards/cards.types'
 
 export type Column = {
   cols: Cols

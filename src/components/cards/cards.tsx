@@ -1,7 +1,7 @@
 import { Button, Typography } from '@/components'
 import { CardsTable, Sort } from '@/components/cards/cards-table/cards-table'
 import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
-import { CardType } from '@/services/carts/carts.types'
+import { CardType } from '@/services/cards/cards.types'
 
 import s from './cards.module.scss'
 
