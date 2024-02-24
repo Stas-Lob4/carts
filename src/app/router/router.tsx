@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { ROUTES } from '@/common'
-import { Layout } from '@/components'
+import { Layout, useAuthContext } from '@/components'
 import {
   CheckEmailPage,
   CreatePasswordPage,
@@ -44,9 +44,9 @@ const publicRouter: RouteObject[] = [
 ]
 
 const PrivateRoutes = () => {
-  const { isAuthenticated } = { isAuthenticated: true }
+  const { isAuth } = useAuthContext()
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={ROUTES.signIn} />
+  return isAuth ? <Outlet /> : <Navigate to={ROUTES.signIn} />
 }
 
 const privateRouter: RouteObject[] = [
