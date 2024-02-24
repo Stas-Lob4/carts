@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { CardType } from '@/services/carts/carts.types'
+import { CardType } from '@/services/cards/cards.types'
 import { action } from '@storybook/addon-actions'
 
 import { LearnCard } from './learn-card'

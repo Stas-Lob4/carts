@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
 import DeleteIcon from '@/assets/icons/deleteIcon'
+import { SELECT_OPTIONS_PAGINATION } from '@/common'
 import { useDebounce } from '@/common/hooks/use-debounce'
 import { useDecksSearchParams } from '@/common/hooks/use-decks-search-params'
 import {
   Button,
-  Header,
   Loader,
+  Page,
   Slider,
   TabSwitcher,
   TabType,
@@ -102,16 +103,7 @@ export const Decks = () => {
   }
 
   return (
-    <div className={s.body}>
-      <header className={s.header}>
-        <Header
-          isLoggedIn
-          logout={() => {
-            alert('loggggin ouut')
-          }}
-          profile={me}
-        />
-      </header>
+    <Page>
       <div className={s.allSettings}>
         <div className={s.topItems}>
           <div className={s.title}>
@@ -185,11 +177,11 @@ export const Decks = () => {
             onPerPageChange={(select: string) => changeItemsPerPage(select)}
             page={page}
             perPage={JSON.stringify(itemsPerPage)}
-            perPageOptions={['3', '5', '7', '10', '20']}
+            perPageOptions={SELECT_OPTIONS_PAGINATION.map(m => m.value)}
             siblings={1}
           />
         )}
       </div>
-    </div>
+    </Page>
   )
 }

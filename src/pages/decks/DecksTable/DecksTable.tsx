@@ -72,11 +72,11 @@ export const DecksTable = ({
         {decks?.map(deck => (
           <TableRow key={deck.id}>
             <TableDataCell className={s.deckInfo}>
-              {deck.cover ? (
-                <img src={deck.cover} style={{ height: '50px', width: '70px' }} />
-              ) : (
-                <img src={defaultImage} style={{ height: '50px', width: '70px' }} />
-              )}
+              <img
+                alt={`Image Deck: ${deck.name}`}
+                src={deck.cover ? deck.cover : defaultImage}
+                style={{ height: '50px', width: '70px' }}
+              />
               <Typography
                 as={Link}
                 className={s.deckName}

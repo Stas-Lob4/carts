@@ -1,23 +1,22 @@
 import { Button, Typography } from '@/components'
 import { CardsTable, Sort } from '@/components/cards/cards-table/cards-table'
-import { CardType } from '@/services/carts/carts.types'
+import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
+import { CardType } from '@/services/cards/cards.types'
 
 import s from './cards.module.scss'
 
 type CardProps = {
   cards: CardType[] | undefined
+  deckId: string
   isEmpty?: boolean
   isOwner?: boolean
   onSort: (key: Sort) => void
   searchValue: null | string
-  setCardToDeleteId?: (id: string) => void
-  setCardToEditId?: (id: string) => void
-  setCreateMode: (CreateMode: boolean) => void
   sort: Sort
 }
 
 export const Cards = (props: CardProps) => {
-  const { cards, isEmpty, isOwner, onSort, searchValue, setCreateMode, sort } = props
+  const { cards, deckId, isEmpty, isOwner, onSort, searchValue, sort } = props
 
   if (cards?.length === 0 && searchValue) {
     return (
@@ -25,22 +24,20 @@ export const Cards = (props: CardProps) => {
         No result found for you search query. Please make sure you entered the query correctly.
       </Typography>
     )
-  } else if (cards?.length === 0) {
-    return (
-      <>
-        {isEmpty ? (
-          <div className={s.info}>
-            <Typography as={'h2'} className={s.infoText} variant={'h2'}>
-              Cards not found
-            </Typography>
-            {isOwner && <Button onClick={() => setCreateMode(true)}>Add new card</Button>}
-          </div>
-        ) : (
-          <CardsTable cards={cards} onSort={onSort} sort={sort} />
-        )}
-      </>
-    )
   }
 
-  return <CardsTable cards={cards} onSort={onSort} sort={sort} />
+  return (
+    <>
+      {isEmpty ? (
+        <div className={s.infoBlock}>
+          <Typography as={'h2'} className={s.infoText} variant={'h2'}>
+            {'This deck is empty' + (isOwner ? '. ' + 'Click add new card to fill this deck' : '')}
+          </Typography>
+          {isOwner && <CreateCardModals deckId={deckId} trigger={<Button>Add New Card</Button>} />}
+        </div>
+      ) : (
+        <CardsTable cards={cards} isOwner={isOwner} onSort={onSort} sort={sort} />
+      )}
+    </>
+  )
 }

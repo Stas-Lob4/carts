@@ -4,7 +4,7 @@ import { Grade } from '@/common'
 import { Button, Card, Typography } from '@/components'
 import { LearnBlock } from '@/components/learn-card/learn-block'
 import { RateBlock } from '@/components/learn-card/rate-block'
-import { CardType } from '@/services/carts/carts.types'
+import { CardType } from '@/services/cards/cards.types'
 
 import s from './learn-card.module.scss'
 

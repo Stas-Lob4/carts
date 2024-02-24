@@ -1,19 +1,14 @@
-import { ArrowSort } from '@/assets'
 import {
   Cols,
   Rating,
   Table,
   TableBody,
   TableDataCell,
-  TableHead,
-  TableHeadCell,
+  TableHeader,
   TableRow,
   Typography,
 } from '@/components'
-import { CardType } from '@/services/carts/carts.types'
-import { clsx } from 'clsx'
-
-import s from './cards-table.module.scss'
+import { CardType } from '@/services/cards/cards.types'
 
 export type Column = {
   cols: Cols
@@ -27,7 +22,7 @@ export type Sort = {
   key: string
 } | null
 
-const colums: Column[] = [
+const columns: Column[] = [
   {
     cols: '3',
     key: 'question',
@@ -61,47 +56,9 @@ type CardsTableProps = {
 export const CardsTable = (props: CardsTableProps) => {
   const { cards, onSort, sort } = props
 
-  const handleSort = (key: string, sortable?: boolean) => () => {
-    if (!onSort || !sortable) {
-      return
-    }
-    if (sort?.key !== key) {
-      return onSort({ direction: 'asc', key })
-    }
-
-    if (sort?.direction === 'desc') {
-      return onSort(null)
-    }
-
-    return onSort({
-      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
-      key,
-    })
-  }
-
-  const iconClass = clsx(s.sortArrow, sort?.direction === 'asc' ? s.asc : s.desc)
-
   return (
     <Table>
-      <TableHead>
-        <TableRow>
-          {colums.map(({ cols, key, sortable = true, title }) => (
-            <TableHeadCell
-              className={s.align}
-              col={cols}
-              key={key}
-              onClick={handleSort(key, sortable)}
-            >
-              {title}
-              {sort && sort.key === key && (
-                <span className={iconClass}>
-                  <ArrowSort />
-                </span>
-              )}
-            </TableHeadCell>
-          ))}
-        </TableRow>
-      </TableHead>
+      <TableHeader columns={columns} onSort={onSort} sort={sort} />
       <TableBody>
         {cards?.map(card => (
           <TableRow key={card.id}>

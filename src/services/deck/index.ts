@@ -1,2 +1,2 @@
 export * from './decks.service'
-export * from './deck.types'
+export * from './decks.types'

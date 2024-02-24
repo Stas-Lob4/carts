@@ -2,10 +2,8 @@
   all: unset;
 
   cursor: pointer;
-  user-select: none;
 
   display: inline-flex;
-  flex-shrink: 0;
   gap: 0.625rem;
   align-items: center;
   justify-content: center;
@@ -22,14 +20,12 @@
   background-color: transparent;
   border: none;
   border-radius: 0.25rem;
+  outline: 0.125rem solid transparent;
 
-  transition:
-    200ms background-color,
-    200ms color;
+  transition: 0.3s;
 
-  &:focus-visible {
-    outline: 0.125rem solid var(--color-info-900);
-    outline-offset: 0.125rem;
+  > svg {
+    fill: var(--color-light-100);
   }
 
   &:disabled {
