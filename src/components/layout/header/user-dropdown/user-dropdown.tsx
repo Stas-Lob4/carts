@@ -41,7 +41,7 @@ export const UserDropDown = (props: UserDropDownProps) => {
       </div>
       <DropdownMenuContent>
         <DropdownMenuLabel>
-          <Avatar src={avatar} />
+          <Avatar name={userName} src={avatar} />
           <div>
             <Typography variant={'subtitle2'}>{userName}</Typography>
             <Typography className={s.email} variant={'caption'}>

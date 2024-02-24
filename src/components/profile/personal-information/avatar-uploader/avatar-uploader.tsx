@@ -27,7 +27,7 @@ const AvatarUploaderSchema = z
 
 export type AvatarUploaderValue = z.infer<typeof AvatarUploaderSchema>
 export const AvatarUploader = (props: AvatarUploaderProps) => {
-  const { avatarUrl, className, editable, updateAvatar } = props
+  const { avatarUrl, className, editable, name, updateAvatar } = props
   const fileRef = useRef<HTMLInputElement>(null)
 
   const [avatar, setAvatar] = useState<File | null>(null)
@@ -58,6 +58,7 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
       <div className={classNames.root}>
         <Avatar
           className={classNames.avatar}
+          name={name}
           src={avatarIsValid ? URL.createObjectURL(avatar) : avatarUrl}
           title={'avatar'}
         />
