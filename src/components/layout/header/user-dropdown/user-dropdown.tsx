@@ -35,7 +35,7 @@ export const UserDropDown = (props: UserDropDownProps) => {
         </NavLink>
         <DropdownMenuTrigger asChild>
           <button className={s.trigger}>
-            <Avatar src={avatar} />
+            <Avatar name={userName} src={avatar} />
           </button>
         </DropdownMenuTrigger>
       </div>
