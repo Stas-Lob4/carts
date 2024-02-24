@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { SELECT_OPTIONS_PAGINATION } from '@/common'
@@ -14,11 +14,6 @@ import s from './deck.module.scss'
 
 export const Deck = () => {
   const { deckId } = useParams()
-  const [createMode, setCreateMode] = useState<boolean>(false)
-  const [editMode, setEditMode] = useState<boolean>(false)
-  const [deleteMode, setDeleteMode] = useState<boolean>(false)
-  const [cartToDeleteId, setCartToDeleteId] = useState<null | string>(null)
-  const [cartToEditId, setCartToEditId] = useState<null | string>(null)
 
   const {
     changeItemsPerPage,
@@ -32,7 +27,11 @@ export const Deck = () => {
   } = useDecksSearchParams()
   const debouncedValue = useDebounce<string>(value ?? '', 500)
 
-  const { data: cards, isLoading } = useGetDeckCartsQuery({
+  const {
+    data: cards,
+    isFetching: isFetchingCards,
+    isLoading: isLoadingCards,
+  } = useGetDeckCartsQuery({
     arg: {
       currentPage: page,
       itemsPerPage,
@@ -51,10 +50,7 @@ export const Deck = () => {
     changeValue(e.currentTarget.value)
   }
 
-  // const cardToDeleteName = cards?.items?.find(card => card.id === cardToDeleteName)?.question
-  // const cardToEditId = cards?.items?.find(card => card.id === cardToEditId)
-
-  if (isLoading) {
+  if (isLoadingCards) {
     return <Loader />
   }
 
@@ -64,13 +60,13 @@ export const Deck = () => {
       <CardsHeader
         deck={deck}
         deckId={deckId ?? ''}
+        isEmpty={isEmpty}
+        isLoading={isLoadingCards}
         isOwner={isOwner}
-        setCreateMode={setCreateMode}
-        setDeleteMode={setDeleteMode}
-        setEditMode={setEditMode}
       />
       {!isEmpty && (
         <TextField
+          disabled={isFetchingCards}
           onChange={changeSearchValueHandler}
           placeholder={'Search cards'}
           rootContainerProps={{ className: s.inputSearch }}
@@ -80,23 +76,26 @@ export const Deck = () => {
       )}
       <Cards
         cards={cards?.items}
+        deckId={deckId ?? ''}
         isEmpty={isEmpty}
         isOwner={isOwner}
         onSort={changeSort}
         searchValue={value}
-        setCardToDeleteId={setCartToDeleteId}
-        setCardToEditId={setCartToEditId}
-        setCreateMode={setCreateMode}
         sort={sort}
       />
-      <Pagination
-        count={cards?.pagination.totalPages ?? 0}
-        onChange={changePage}
-        onPerPageChange={changeItemsPerPage}
-        page={page}
-        perPage={String(itemsPerPage)}
-        perPageOptions={SELECT_OPTIONS_PAGINATION.map(m => m.value)}
-      />
+      {cards?.items.length !== 0 && (
+        <div className={s.pagination}>
+          <Pagination
+            count={cards?.pagination.totalPages ?? 0}
+            onChange={page => changePage(page)}
+            onPerPageChange={select => changeItemsPerPage(select)}
+            page={page}
+            perPage={JSON.stringify(itemsPerPage)}
+            perPageOptions={SELECT_OPTIONS_PAGINATION.map(m => m.value)}
+            siblings={1}
+          />
+        </div>
+      )}
     </Page>
   )
 }

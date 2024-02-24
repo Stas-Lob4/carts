@@ -10,8 +10,10 @@ import {
   DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  Skeleton,
   Typography,
 } from '@/components'
+import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
 import { Deck } from '@/services/deck'
 import { clsx } from 'clsx'
 
@@ -21,22 +23,21 @@ type CardsHeaderProps = {
   deck: Deck | undefined
   deckId: string
   isEmpty?: boolean
+  isLoading: boolean
   isOwner: boolean
-  setCreateMode: (createModule: boolean) => void
-  setDeleteMode: (editDeckMode: boolean) => void
-  setEditMode: (editDeckMode: boolean) => void
 } & Omit<ComponentPropsWithoutRef<'div'>, 'children'>
 export const CardsHeader = (props: CardsHeaderProps) => {
-  const { className, deck, deckId, isEmpty, isOwner, setCreateMode, setDeleteMode, setEditMode } =
-    props
+  const { className, deck, deckId, isEmpty, isLoading, isOwner } = props
   const toLearnLink = `/decks/${deckId}/learn`
+
+  const selectItemHandler = (e: Event) => e.preventDefault()
 
   const classNames = {
     deckImage: s.deckImage,
     header: clsx(s.header, className),
     headerLeft: s.headerLeft,
     headerWrapper: s.headerWrapper,
-    iconTrigger: s.trigger,
+    iconTrigger: s.iconTrigger,
     title: s.title,
   }
 
@@ -55,7 +56,7 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {isOwner && (
+                {isEmpty && (
                   <>
                     <DropdownMenuItem asChild>
                       <Link to={toLearnLink}>
@@ -65,23 +66,34 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                     <DropdownMenuSeparator />
                   </>
                 )}
-                <DropdownMenuItem onSelect={() => setEditMode(true)}>
+                <DropdownMenuItem onSelect={selectItemHandler}>
                   <DropdownBasicItemContent icon={<Edit />} name={'Edit'} />
                 </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={selectItemHandler}>
+                  <DropdownBasicItemContent icon={<Trash />} name={'Delete'} />
+                </DropdownMenuItem>
               </DropdownMenuContent>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => setDeleteMode(true)}>
-                <DropdownBasicItemContent icon={<Trash />} name={'Delete'} />
-              </DropdownMenuItem>
             </DropdownMenuRoot>
           )}
         </div>
-        {isOwner && !isEmpty && <Button onClick={() => setCreateMode(true)}>Add new card</Button>}
         {isOwner && !isEmpty && (
-          <Button as={Link} to={toLearnLink}>
-            Learn to Pack
-          </Button>
+          <CreateCardModals
+            deckId={deckId}
+            trigger={<Button disabled={isLoading}>Add New Card</Button>}
+          />
         )}
+        {!isOwner &&
+          !isEmpty &&
+          (isLoading ? (
+            <div>
+              <Skeleton height={'36px'} width={'143px'} />
+            </div>
+          ) : (
+            <Button as={Link} to={toLearnLink}>
+              Learn to Pack
+            </Button>
+          ))}
       </div>
       {deck?.cover && <img alt={'Deck Cover'} className={classNames.deckImage} src={deck.cover} />}
     </div>

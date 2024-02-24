@@ -65,8 +65,11 @@ export const Pagination: FC<PaginationProps> = ({
     page,
     siblings,
   })
-
   const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
+
+  if (count === 0 || paginationRange.length < 2) {
+    return null
+  }
 
   return (
     <div className={classNames.root}>

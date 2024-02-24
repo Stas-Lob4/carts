@@ -23,6 +23,7 @@ export const Learn = () => {
 
   const onSubmit = async (data: Grade, changeRateMode: any) => {
     if (card) {
+      console.log(card.id)
       const res = await gradeCard({
         args: {
           cardId: card.id,

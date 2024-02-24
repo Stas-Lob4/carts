@@ -11,6 +11,7 @@ import { Layout, useAuthContext } from '@/components'
 import {
   CheckEmailPage,
   CreatePasswordPage,
+  Deck,
   Decks,
   ErrorPage,
   Learn,
@@ -57,6 +58,10 @@ const privateRouter: RouteObject[] = [
   {
     element: <Decks />,
     path: ROUTES.decks,
+  },
+  {
+    element: <Deck />,
+    path: ROUTES.deck,
   },
   {
     element: <Profile />,

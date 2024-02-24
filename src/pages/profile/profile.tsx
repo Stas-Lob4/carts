@@ -7,6 +7,8 @@ import { AvatarUploaderValue } from '@/components/profile/personal-information/a
 import { ProfileInfoFormValues } from '@/components/profile/personal-information/profile-info-form/profile-info-form'
 import { useGetMeQuery, useLogOutMutation, useUpdateProfileMutation } from '@/services'
 
+import s from './profile.module.scss'
+
 export const Profile = () => {
   const { data } = useGetMeQuery()
   const [updateProfile] = useUpdateProfileMutation()
@@ -50,8 +52,8 @@ export const Profile = () => {
   }
 
   return (
-    <Page>
-      <BackButton text={'Back to Deck List'} />
+    <Page className={s.root}>
+      <BackButton className={s.backButton} text={'Back to Deck List'} />
       <PersonalInformation
         data={data}
         logout={logoutHandler}
