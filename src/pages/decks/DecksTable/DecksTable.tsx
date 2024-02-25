@@ -13,11 +13,11 @@ import {
   TableRow,
   Typography,
 } from '@/components'
+import { Deck } from '@/services/decks'
 
 import s from './decks-table.module.scss'
 
 import defaultImage from '../../../assets/images/default-image-79ca681b.jpg'
-import { Deck } from '../../../services/decks'
 import { UpdateItemModal } from '../createUpdateModals/updateModal'
 import { DeleteItemModal } from '../deleteItemModal/deleteItemModal'
 
@@ -91,9 +91,11 @@ export const DecksTable = ({
             <TableDataCell>{deck.author.name}</TableDataCell>
             <TableDataCell>
               <div className={s.iconsContainer}>
-                <Button as={Link} to={`/decks/${deck.id}/learn`} variant={'icon'}>
-                  <PlayCircleOutline />
-                </Button>
+                {deck.cardsCount > 0 && (
+                  <Button as={Link} to={`${deck.id}/learn`} variant={'icon'}>
+                    <PlayCircleOutline />
+                  </Button>
+                )}
                 {deck.author.id === currentUserId && (
                   <>
                     <UpdateItemModal
