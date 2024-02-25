@@ -13,11 +13,11 @@ import {
   TableRow,
   Typography,
 } from '@/components'
-import { Deck } from '@/services/deck'
 
 import s from './decks-table.module.scss'
 
 import defaultImage from '../../../assets/images/default-image-79ca681b.jpg'
+import { Deck } from '../../../services/decks'
 import { UpdateItemModal } from '../createUpdateModals/updateModal'
 import { DeleteItemModal } from '../deleteItemModal/deleteItemModal'
 

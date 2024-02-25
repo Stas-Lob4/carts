@@ -10,8 +10,8 @@ import s from './modal.module.scss'
 export type Modals = {
   children?: ReactNode
   className?: string
-  onOpenChange: (open: boolean) => void
-  open: boolean
+  onOpenChange?: (open: boolean) => void
+  open?: boolean
   title?: string
   trigger?: ReactNode
 } & ComponentPropsWithoutRef<typeof Dialog.Content>

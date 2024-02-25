@@ -14,10 +14,11 @@ import {
   Typography,
 } from '@/components'
 import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
-import { Deck } from '@/services/deck'
 import { clsx } from 'clsx'
 
 import s from './cards-header.module.scss'
+
+import { Deck } from '../../../services/decks'
 
 type CardsHeaderProps = {
   deck: Deck | undefined

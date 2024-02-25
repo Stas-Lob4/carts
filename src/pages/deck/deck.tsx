@@ -8,9 +8,10 @@ import { BackButton, Cards, Loader, Page, TextField } from '@/components'
 import { CardsHeader } from '@/components/cards/cards-header/cards-header'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
-import { useGetDeckCartsQuery, useGetOneDeckQuery } from '@/services/deck'
 
 import s from './deck.module.scss'
+
+import { useGetDeckCartsQuery, useGetOneDeckQuery } from '../../services/decks'
 
 export const Deck = () => {
   const { deckId } = useParams()
@@ -56,7 +57,7 @@ export const Deck = () => {
 
   return (
     <Page marginTop={'24px'}>
-      <BackButton text={'Back to Decks List'} />
+      <BackButton className={s.backButton} text={'Back to Decks List'} />
       <CardsHeader
         deck={deck}
         deckId={deckId ?? ''}

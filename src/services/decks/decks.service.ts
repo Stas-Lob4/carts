@@ -7,7 +7,7 @@ import {
   DeleteDeckArgs,
   GetDecksArgs,
   GradeCardArg,
-} from '@/services/deck/decks.types'
+} from '@/services/decks/decks.types'
 
 export const DecksService = baseApi.injectEndpoints({
   endpoints: builder => {
