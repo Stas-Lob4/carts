@@ -16,15 +16,15 @@ import {
 } from '@/components'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
-
-import s from './decks.module.scss'
-
 import {
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useGetDecksQuery,
   useUpdateDeckMutation,
-} from '../../services/decks'
+} from '@/services/decks'
+
+import s from './decks.module.scss'
+
 import { DecksTable } from './DecksTable/DecksTable'
 import { CreateItemModal } from './createUpdateModals/createItemModal'
 

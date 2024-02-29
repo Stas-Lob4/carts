@@ -1,19 +1,10 @@
 import { Button, Typography } from '@/components'
-import { CardsTable, Sort } from '@/components/cards/cards-table/cards-table'
-import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
-import { CardType } from '@/services/cards/cards.types'
+import { CardsTable } from '@/components/cards/cards-table/cards-table'
+import { CreateCardModal } from '@/components/modals/cards/create-card/create-card-modal'
 
 import s from './cards.module.scss'
 
-type CardProps = {
-  cards: CardType[] | undefined
-  deckId: string
-  isEmpty?: boolean
-  isOwner?: boolean
-  onSort: (key: Sort) => void
-  searchValue: null | string
-  sort: Sort
-}
+import { CardProps } from './cards.types'
 
 export const Cards = (props: CardProps) => {
   const { cards, deckId, isEmpty, isOwner, onSort, searchValue, sort } = props
@@ -34,7 +25,7 @@ export const Cards = (props: CardProps) => {
             {'This decks is empty' +
               (isOwner ? '. ' + 'Click add new card to fill this decks' : '')}
           </Typography>
-          {isOwner && <CreateCardModals deckId={deckId} trigger={<Button>Add New Card</Button>} />}
+          {isOwner && <CreateCardModal deckId={deckId} trigger={<Button>Add New Card</Button>} />}
         </div>
       ) : (
         <CardsTable cards={cards} isOwner={isOwner} onSort={onSort} sort={sort} />

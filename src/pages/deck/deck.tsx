@@ -8,10 +8,9 @@ import { BackButton, Cards, Loader, Page, TextField } from '@/components'
 import { CardsHeader } from '@/components/cards/cards-header/cards-header'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
+import { useGetDeckCartsQuery, useGetOneDeckQuery } from '@/services/decks'
 
 import s from './deck.module.scss'
-
-import { useGetDeckCartsQuery, useGetOneDeckQuery } from '../../services/decks'
 
 export const Deck = () => {
   const { deckId } = useParams()

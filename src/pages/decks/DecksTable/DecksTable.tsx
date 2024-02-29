@@ -91,11 +91,14 @@ export const DecksTable = ({
             <TableDataCell>{deck.author.name}</TableDataCell>
             <TableDataCell>
               <div className={s.iconsContainer}>
-                {deck.cardsCount > 0 && (
-                  <Button as={Link} to={`${deck.id}/learn`} variant={'icon'}>
-                    <PlayCircleOutline />
-                  </Button>
-                )}
+                <Button
+                  as={deck.cardsCount > 0 && Link}
+                  disabled={deck.cardsCount === 0}
+                  to={`${deck.id}/learn`}
+                  variant={'icon'}
+                >
+                  <PlayCircleOutline />
+                </Button>
                 {deck.author.id === currentUserId && (
                   <>
                     <UpdateItemModal
