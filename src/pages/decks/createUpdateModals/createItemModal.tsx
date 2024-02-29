@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button, ControlledCheckbox, FileUploader, Modal, TextField } from '@/components'
-import { useCreateDeckMutation } from '@/services/deck'
+import { useCreateDeckMutation } from '@/services/decks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { z } from 'zod'

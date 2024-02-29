@@ -70,7 +70,7 @@ export const UpdateItemModal = (props: UpdateItemModalProps) => {
           name={'image'}
           setFile={setImg}
           trigger={
-            <Button as={'span'} fullWidth style={{ width: '450px' }} variant={'secondary'}>
+            <Button as={'span'} fullWidth variant={'secondary'}>
               Upload Image
             </Button>
           }

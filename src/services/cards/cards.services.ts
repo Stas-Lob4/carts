@@ -9,7 +9,7 @@ const cardsService = baseApi.injectEndpoints({
       query: ({ body, id }) => ({
         body,
         method: 'POST',
-        url: `v1/decks/${id}/cards`,
+        url: `/v1/decks/${id}/cards`,
       }),
     }),
     deleteCard: builder.mutation<void, CardArgsType>({

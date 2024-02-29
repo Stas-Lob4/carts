@@ -7,7 +7,7 @@ export const useDecksSearchParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const sortKey = searchParams.get('sortKey') || null
   const sortDirection = searchParams.get('sortDirection') || null
-  const itemsPerPage = Number(searchParams.get('items')) || 10
+  const itemsPerPage = Number(searchParams.get('items')) || 5
   const minCards = Number(searchParams.get('minCards')) || 0
   const maxCards = Number(searchParams.get('maxCards')) || 60
   const page = Number(searchParams.get('page')) || 1

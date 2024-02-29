@@ -1,4 +1,7 @@
+import { Edit, Trash } from '@/assets'
+import defaultImage from '@/assets/images/default-image-79ca681b.jpg'
 import {
+  Button,
   Cols,
   Rating,
   Table,
@@ -8,7 +11,10 @@ import {
   TableRow,
   Typography,
 } from '@/components'
+import { DeleteCardModule, EditCardModal } from '@/components/modals'
 import { CardType } from '@/services/cards/cards.types'
+
+import s from './cards-table.module.scss'
 
 export type Column = {
   cols: Cols
@@ -49,12 +55,10 @@ type CardsTableProps = {
   cards: CardType[] | undefined
   isOwner?: boolean
   onSort: (key: Sort) => void
-  setCardToDeleteId?: (id: string) => void
-  setCardToEditId?: (id: string) => void
   sort: Sort
 }
 export const CardsTable = (props: CardsTableProps) => {
-  const { cards, onSort, sort } = props
+  const { cards, isOwner, onSort, sort } = props
 
   return (
     <Table>
@@ -63,12 +67,53 @@ export const CardsTable = (props: CardsTableProps) => {
         {cards?.map(card => (
           <TableRow key={card.id}>
             <TableDataCell>
-              <Typography variant={'body2'}>{card.question}</Typography>
+              <div className={s.wrapper}>
+                <img
+                  alt={`Image Deck: ${card.question}`}
+                  src={card.questionImg ? card.questionImg : defaultImage}
+                  style={{ height: '50px', width: '70px' }}
+                />
+                <Typography variant={'body2'}>{card.question}</Typography>
+              </div>
             </TableDataCell>
-            <TableDataCell>{card.answer}</TableDataCell>
-            <TableDataCell>{new Date(card.updated).toLocaleDateString('ru-Ru')}</TableDataCell>
             <TableDataCell>
-              <Rating rating={card.grade} />
+              <div className={s.wrapper}>
+                <img
+                  alt={`Image Deck: ${card.answer}`}
+                  src={card.answerImg ? card.answerImg : defaultImage}
+                  style={{ height: '50px', width: '70px' }}
+                />
+                {card.answer}
+              </div>
+            </TableDataCell>
+            <TableDataCell>{new Date(card.updated).toLocaleDateString('ru-Ru')}</TableDataCell>
+            <TableDataCell className={isOwner ? s.altTr : ''} col={'2'}>
+              <div className={s.wrapperGrade}>
+                <Rating rating={card.grade} />
+                <div>
+                  {isOwner && (
+                    <div className={s.buttons}>
+                      <EditCardModal
+                        card={card}
+                        trigger={
+                          <Button variant={'icon'}>
+                            <Edit />
+                          </Button>
+                        }
+                      />
+                      <DeleteCardModule
+                        id={card.id}
+                        name={card.question}
+                        trigger={
+                          <Button variant={'icon'}>
+                            <Trash />
+                          </Button>
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
             </TableDataCell>
           </TableRow>
         ))}

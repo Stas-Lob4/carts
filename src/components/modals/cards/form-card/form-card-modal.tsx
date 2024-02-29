@@ -22,8 +22,8 @@ export type FormCardModalValues = z.input<typeof CARD_SCHEMA>
 
 export const FormCardModal = (props: FormCardModalProps) => {
   const { buttonText, card, className, disabled, onSubmit, setOpen } = props
-  const [questionImg, setQuestionImg] = useState<UploadImage>(card?.questionImg || null)
-  const [answerImg, setAnswerImg] = useState<UploadImage>(card?.answerImg || null)
+  const [questionImg, setQuestionImg] = useState<UploadImage>(card?.questionImg || '')
+  const [answerImg, setAnswerImg] = useState<UploadImage>(card?.answerImg || '')
 
   const formMethods = useForm<FormCardModalValues>({
     defaultValues: {
@@ -59,9 +59,8 @@ export const FormCardModal = (props: FormCardModalProps) => {
       questionFileRef.current.value = ''
     }
   }
-
   const clearAnswerImg = () => {
-    setQuestionImg(null)
+    setAnswerImg(null)
     if (answerFileRef.current) {
       answerFileRef.current.value = ''
     }

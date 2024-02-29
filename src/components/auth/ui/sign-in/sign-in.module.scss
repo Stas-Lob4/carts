@@ -1,7 +1,6 @@
 .card {
   width: 100%;
   max-width: 420px;
-  padding: 33px 36px 29px;
 }
 
 .title {
@@ -11,6 +10,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   & > div:nth-child(1) {
     margin-top: 27px;

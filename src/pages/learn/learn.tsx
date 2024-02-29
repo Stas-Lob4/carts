@@ -4,7 +4,12 @@ import { useParams } from 'react-router-dom'
 import { Grade } from '@/common'
 import { BackButton, Page } from '@/components'
 import { LearnCard } from '@/components/learn-card/learn-card'
-import { useGetOneDeckQuery, useGetRandomCardQuery, useGradeCardMutation } from '@/services/deck'
+
+import {
+  useGetOneDeckQuery,
+  useGetRandomCardQuery,
+  useGradeCardMutation,
+} from '../../services/decks'
 
 export const Learn = () => {
   const params = useParams()

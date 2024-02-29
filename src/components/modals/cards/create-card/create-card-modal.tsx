@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { Modal } from '@/components'
-import { CreateCardModalProps } from '@/components/modals/cards/create-card-modals/create-card-modals.types'
-import { FormCardModal } from '@/components/modals/cards/form-card-modal'
+import { CreateCardModalProps } from '@/components/modals/cards/create-card/create-card-modal.types'
+import { FormCardModal } from '../form-card'
 import { useCreateCardMutation } from '@/services/cards/cards.services'
 
-export const CreateCardModals = ({ className, deckId, trigger }: CreateCardModalProps) => {
+export const CreateCardModal = ({ className, deckId, trigger }: CreateCardModalProps) => {
   const [open, setOpen] = useState(false)
 
   const [createCard, { isLoading }] = useCreateCardMutation()

@@ -30,7 +30,7 @@ export const ModalWithTitle: Story = {
           <Button variant={'secondary'}>Upload Image</Button>
           <Checkbox
             checked={checked}
-            label={'Private deck'}
+            label={'Private decks'}
             onCheckedChange={() => setChecked(!checked)}
           />
           <div style={divStyles}>

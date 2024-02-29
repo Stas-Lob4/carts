@@ -13,7 +13,7 @@ import {
   TableRow,
   Typography,
 } from '@/components'
-import { Deck } from '@/services/deck'
+import { Deck } from '@/services/decks'
 
 import s from './decks-table.module.scss'
 
@@ -91,7 +91,12 @@ export const DecksTable = ({
             <TableDataCell>{deck.author.name}</TableDataCell>
             <TableDataCell>
               <div className={s.iconsContainer}>
-                <Button as={Link} to={`/decks/${deck.id}/learn`} variant={'icon'}>
+                <Button
+                  as={deck.cardsCount > 0 && Link}
+                  disabled={deck.cardsCount === 0}
+                  to={`${deck.id}/learn`}
+                  variant={'icon'}
+                >
                   <PlayCircleOutline />
                 </Button>
                 {deck.author.id === currentUserId && (

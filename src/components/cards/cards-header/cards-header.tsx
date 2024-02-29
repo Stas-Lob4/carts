@@ -13,8 +13,8 @@ import {
   Skeleton,
   Typography,
 } from '@/components'
-import { CreateCardModals } from '@/components/modals/cards/create-card-modals/create-card-modals'
-import { Deck } from '@/services/deck'
+import { CreateCardModal } from '@/components/modals/cards/create-card/create-card-modal'
+import { Deck } from '@/services/decks'
 import { clsx } from 'clsx'
 
 import s from './cards-header.module.scss'
@@ -50,10 +50,8 @@ export const CardsHeader = (props: CardsHeaderProps) => {
           </Typography>
           {isOwner && (
             <DropdownMenuRoot>
-              <DropdownMenuTrigger>
-                <Button variant={'icon'}>
-                  <Info className={classNames.iconTrigger} />
-                </Button>
+              <DropdownMenuTrigger className={s.trigger}>
+                <Info className={classNames.iconTrigger} />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {!isEmpty && (
@@ -78,7 +76,7 @@ export const CardsHeader = (props: CardsHeaderProps) => {
           )}
         </div>
         {isOwner && !isEmpty && (
-          <CreateCardModals
+          <CreateCardModal
             deckId={deckId}
             trigger={<Button disabled={isLoading}>Add New Card</Button>}
           />

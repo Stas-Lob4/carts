@@ -21,7 +21,7 @@ import {
   useDeleteDeckMutation,
   useGetDecksQuery,
   useUpdateDeckMutation,
-} from '@/services/deck'
+} from '@/services/decks'
 
 import s from './decks.module.scss'
 
