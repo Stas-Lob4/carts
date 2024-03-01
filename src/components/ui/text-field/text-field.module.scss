@@ -23,7 +23,8 @@
 
       background: transparent;
       border: 0.063rem solid var(--color-dark-300);
-      outline: 0;
+      border-radius: 0.125rem;
+      outline-color: transparent;
 
       transition: border-color 0.2s;
 
@@ -31,16 +32,11 @@
         display: none;
       }
 
-      &:focus {
-        color: var(--color-light-100);
-        border: 0.063rem solid var(--color-dark-300);
-      }
-
       &:active {
-        border: var(--color-light-100);
+        border-color: var(--color-light-100);
 
         &::placeholder {
-          border: var(--color-light-100);
+          border-color: var(--color-light-100);
         }
 
         &.searchIcon {
@@ -52,9 +48,17 @@
         background-color: var(--color-dark-700);
       }
 
+      &:focus-visible {
+        outline: 0.125rem solid var(--color-info-700);
+      }
+
       &.error {
         color: var(--color-danger-300);
         border-color: var(--color-danger-300);
+
+        &.input {
+          margin-bottom: 0.188rem;
+        }
       }
 
       &.hasSearchIcon {
@@ -73,10 +77,6 @@
       margin-left: 0.75rem;
 
       fill: var(--color-dark-100);
-
-      &.disabled {
-        fill: var(--color-dark-300);
-      }
     }
 
     .buttonIcon {
@@ -100,6 +100,17 @@
       &:focus-visible {
         outline: var(--color-info-700);
       }
+    }
+  }
+
+  .disabled {
+    &.label,
+    &.input {
+      color: var(--color-dark-300);
+    }
+
+    &.searchIcon {
+      fill: var(--color-dark-300);
     }
   }
 }
