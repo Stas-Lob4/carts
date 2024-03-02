@@ -57,13 +57,15 @@ export const Decks = () => {
 
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 500)
+  const debouncedMinCards = useDebounce(minCards, 500)
+  const debouncedMaxCards = useDebounce(maxCards, 500)
 
   const { data: response, isLoading } = useGetDecksQuery({
     authorId,
     currentPage: page,
     itemsPerPage,
-    maxCardsCount: maxCards,
-    minCardsCount: minCards,
+    maxCardsCount: debouncedMaxCards,
+    minCardsCount: debouncedMinCards,
     name: debouncedSearch,
     orderBy: sort ? `${sort?.key}-${sort?.direction}` : null,
   })
