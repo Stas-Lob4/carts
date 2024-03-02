@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Edit, Info, Play, Trash } from '@/assets'
+import { Info, Play, Trash } from '@/assets'
 import {
   Button,
   DropdownBasicItemContent,
@@ -54,7 +54,7 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                 <Info className={classNames.iconTrigger} />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {!isEmpty && (
+                {isEmpty && (
                   <>
                     <DropdownMenuItem asChild>
                       <Link to={toLearnLink}>
@@ -65,7 +65,13 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                   </>
                 )}
                 <DropdownMenuItem onSelect={selectItemHandler}>
-                  <DropdownBasicItemContent icon={<Edit />} name={'Edit'} />
+                  {/*<UpdateItemModal*/}
+                  {/*  buttonName={'Edit Pack'}*/}
+                  {/*  id={deck.id}*/}
+                  {/*  modalTitle={'Edit Deck'}*/}
+                  {/*  name={deck.name}*/}
+                  {/*  trigger={<DropdownBasicItemContent icon={<Edit />} name={'Edit'} />}*/}
+                  {/*/>*/}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={selectItemHandler}>
