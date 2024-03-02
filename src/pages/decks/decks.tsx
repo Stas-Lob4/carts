@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import DeleteIcon from '@/assets/icons/deleteIcon'
 import { SELECT_OPTIONS_PAGINATION } from '@/common'
@@ -97,6 +98,12 @@ export const Decks = () => {
     setTabValue('2')
     changeMinMaxCard([0, 60])
   }
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  useEffect(() => {
+    searchParams.set('page', '1')
+    setSearchParams(searchParams)
+  }, [tabValue])
 
   if (isLoading) {
     return <Loader />
