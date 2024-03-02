@@ -24,7 +24,7 @@ const imageSchema = z
   )
 
 const createDecksSchema = z.object({
-  name: z.string().min(3),
+  name: z.string().min(3).max(30),
 })
 
 type updateCallback = (id: string, data: FormData) => void

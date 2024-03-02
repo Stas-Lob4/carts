@@ -60,6 +60,7 @@ export type Column = {
   key: string
   sortable?: boolean
   title: string
+  width?: string
 }
 export type Sort = {
   direction: 'asc' | 'desc'
@@ -95,8 +96,8 @@ export const TableHeader = ({ columns, onSort, sort, ...restProps }: TableHeader
   return (
     <TableHead {...restProps}>
       <TableRow>
-        {columns.map(({ key, sortable = true, title }) => (
-          <TableHeadCell key={key} onClick={handleSort(key, sortable)}>
+        {columns.map(({ key, sortable = true, title, width }) => (
+          <TableHeadCell key={key} onClick={handleSort(key, sortable)} style={{ width: width }}>
             {title}
             {sort && sort.key === key && (
               <span>
