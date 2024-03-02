@@ -1,21 +1,28 @@
 import DeleteIcon from '@/assets/icons/deleteIcon'
 import { Button, Modal, Typography } from '@/components'
+import { useDeleteDeckMutation } from '@/services/decks'
 import { DialogClose } from '@radix-ui/react-dialog'
 
 import s from './deleteItem.module.scss'
 
 type DeleteModalProps = {
-  deleteCallback: () => void
   id: string
   modalName: string
   title: string
 }
 
 export const DeleteItemModal = (props: DeleteModalProps) => {
+  const { id, modalName, title } = props
+  const [deleteDeckMutation] = useDeleteDeckMutation()
+
+  const deleteDeckHandler = () => {
+    deleteDeckMutation({ id: id })
+  }
+
   return (
-    <Modal title={`Delete ${props.modalName}`} trigger={<DeleteIcon />}>
+    <Modal title={`Delete ${modalName}`} trigger={<DeleteIcon />}>
       <div className={s.content}>
-        <Typography>Do you really want to delete {props.title}?</Typography>
+        <Typography>Do you really want to delete {title}?</Typography>
         <Typography>All cards will be deleted.</Typography>
         <div className={s.buttons}>
           <DialogClose className={s.closeDialog}>
@@ -23,13 +30,7 @@ export const DeleteItemModal = (props: DeleteModalProps) => {
               Cancel
             </Button>
           </DialogClose>
-          <Button
-            onClick={() => {
-              props.deleteCallback()
-            }}
-          >
-            Delete {props.modalName}
-          </Button>
+          <Button onClick={deleteDeckHandler}>Delete {props.modalName}</Button>
         </div>
       </div>
     </Modal>
