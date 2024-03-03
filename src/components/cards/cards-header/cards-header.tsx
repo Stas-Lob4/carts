@@ -1,8 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Edit, Info, Play } from '@/assets'
-import DeleteIcon from '@/assets/icons/deleteIcon'
+import { Edit, Info, Play, Trash } from '@/assets'
 import {
   Button,
   DropdownMenuContent,
@@ -92,7 +91,7 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                     title={deck.name}
                     trigger={
                       <Button variant={'icon'}>
-                        <DeleteIcon />
+                        <Trash />
                         Delete
                       </Button>
                     }

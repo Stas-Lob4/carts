@@ -2,9 +2,9 @@ export const Play = () => {
   return (
     <svg
       fill={'none'}
-      height={'24'}
+      height={'20'}
       viewBox={'0 0 16 16'}
-      width={'24'}
+      width={'20'}
       xmlns={'http://www.w3.org/2000/svg'}
     >
       <g clipPath={'url(#clip0_53607_1951)'}>
