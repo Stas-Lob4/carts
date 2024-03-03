@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Edit, Info, Play, Trash } from '@/assets'
 import {
   Button,
-  DropdownBasicItemContent,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRoot,
@@ -15,13 +14,14 @@ import {
 } from '@/components'
 import { CreateCardModal } from '@/components/modals/cards/create-card/create-card-modal'
 import { UpdateItemModal } from '@/components/modals/decks/create-update-deck/updateModal'
+import { DeleteItemModal } from '@/components/modals/decks/deleteItemModal/deleteItemModal'
 import { Deck } from '@/services/decks'
 import { clsx } from 'clsx'
 
 import s from './cards-header.module.scss'
 
 type CardsHeaderProps = {
-  deck: Deck
+  deck: Deck | undefined
   deckId: string
   isEmpty?: boolean
   isLoading: boolean
@@ -49,33 +49,53 @@ export const CardsHeader = (props: CardsHeaderProps) => {
           <Typography as={'h2'} className={classNames.title} variant={'large'}>
             {deck?.name}
           </Typography>
-          {isOwner && (
+          {isOwner && deck && (
             <DropdownMenuRoot>
               <DropdownMenuTrigger className={s.trigger}>
                 <Info className={classNames.iconTrigger} />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {isEmpty && (
+                {!isEmpty && (
                   <>
                     <DropdownMenuItem asChild>
                       <Link to={toLearnLink}>
-                        <DropdownBasicItemContent icon={<Play />} name={'Learn'} />
+                        <Button variant={'icon'}>
+                          <Play />
+                          Learn
+                        </Button>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                   </>
                 )}
                 <DropdownMenuItem onSelect={selectItemHandler}>
-                  <UpdateItemModal
-                    buttonName={'Edit Pack'}
-                    deck={deck}
-                    modalTitle={'Edit Deck'}
-                    trigger={<DropdownBasicItemContent icon={<Edit />} name={'Edit'} />}
-                  />
+                  {deck && (
+                    <UpdateItemModal
+                      buttonName={'Edit Pack'}
+                      deck={deck}
+                      modalTitle={'Edit Deck'}
+                      trigger={
+                        <Button variant={'icon'}>
+                          <Edit />
+                          Edit
+                        </Button>
+                      }
+                    />
+                  )}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={selectItemHandler}>
-                  <DropdownBasicItemContent icon={<Trash />} name={'Delete'} />
+                  <DeleteItemModal
+                    id={deck.id}
+                    modalName={'Deck'}
+                    title={deck.name}
+                    trigger={
+                      <Button variant={'icon'}>
+                        <Trash />
+                        Delete
+                      </Button>
+                    }
+                  />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenuRoot>
