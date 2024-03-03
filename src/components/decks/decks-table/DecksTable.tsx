@@ -94,9 +94,8 @@ export const DecksTable = ({ currentUserId, decks, onSort, sort }: Props) => {
                   <>
                     <UpdateItemModal
                       buttonName={'Edit Pack'}
-                      id={deck.id}
+                      deck={deck}
                       modalTitle={'Edit Deck'}
-                      name={deck.name}
                       trigger={<EditIcon />}
                     />
                     <DeleteItemModal id={deck.id} modalName={'Deck'} title={deck.name} />

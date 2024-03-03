@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button, ControlledCheckbox, FileUploader, Modal, TextField } from '@/components'
-import { useUpdateDeckMutation } from '@/services/decks'
+import { Deck, useUpdateDeckMutation } from '@/services/decks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { z } from 'zod'
@@ -29,21 +29,20 @@ const updateDecksSchema = z.object({
 
 type UpdateItemModalProps = {
   buttonName: string
-  id: string
+  deck: Deck
   modalTitle: string
-  name: string
   trigger: ReactNode
 }
 
 export const UpdateItemModal = (props: UpdateItemModalProps) => {
-  const { buttonName, id, modalTitle, name, trigger } = props
+  const { buttonName, deck, modalTitle, trigger } = props
   const {
     control,
     formState: { errors },
     handleSubmit,
     register,
   } = useForm<FormValues>({
-    defaultValues: { name: name },
+    defaultValues: { name: deck.name },
     resolver: zodResolver(updateDecksSchema),
   })
   const [img, setImg] = useState<File | null>()
@@ -63,7 +62,7 @@ export const UpdateItemModal = (props: UpdateItemModalProps) => {
     deckFormData.append('name', data.name)
     deckFormData.append('isPrivate', `${data.private}`)
 
-    updateDeckHandler(id, deckFormData)
+    updateDeckHandler(deck.id, deckFormData)
   }
 
   return (

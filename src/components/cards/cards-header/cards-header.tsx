@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Info, Play, Trash } from '@/assets'
+import { Edit, Info, Play, Trash } from '@/assets'
 import {
   Button,
   DropdownBasicItemContent,
@@ -14,13 +14,14 @@ import {
   Typography,
 } from '@/components'
 import { CreateCardModal } from '@/components/modals/cards/create-card/create-card-modal'
+import { UpdateItemModal } from '@/components/modals/decks/create-update-deck/updateModal'
 import { Deck } from '@/services/decks'
 import { clsx } from 'clsx'
 
 import s from './cards-header.module.scss'
 
 type CardsHeaderProps = {
-  deck: Deck | undefined
+  deck: Deck
   deckId: string
   isEmpty?: boolean
   isLoading: boolean
@@ -65,13 +66,12 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                   </>
                 )}
                 <DropdownMenuItem onSelect={selectItemHandler}>
-                  {/*<UpdateItemModal*/}
-                  {/*  buttonName={'Edit Pack'}*/}
-                  {/*  id={deck.id}*/}
-                  {/*  modalTitle={'Edit Deck'}*/}
-                  {/*  name={deck.name}*/}
-                  {/*  trigger={<DropdownBasicItemContent icon={<Edit />} name={'Edit'} />}*/}
-                  {/*/>*/}
+                  <UpdateItemModal
+                    buttonName={'Edit Pack'}
+                    deck={deck}
+                    modalTitle={'Edit Deck'}
+                    trigger={<DropdownBasicItemContent icon={<Edit />} name={'Edit'} />}
+                  />
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={selectItemHandler}>
