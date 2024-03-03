@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import DeleteIcon from '@/assets/icons/deleteIcon'
 import { SELECT_OPTIONS_PAGINATION } from '@/common'
@@ -14,19 +15,13 @@ import {
   TextField,
   Typography,
 } from '@/components'
+import { DecksTable } from '@/components/decks/decks-table/DecksTable'
+import { CreateItemModal } from '@/components/modals/decks/create-update-deck/createItemModal'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
-import {
-  useCreateDeckMutation,
-  useDeleteDeckMutation,
-  useGetDecksQuery,
-  useUpdateDeckMutation,
-} from '@/services/decks'
+import { useGetDecksQuery } from '@/services/decks'
 
 import s from './decks.module.scss'
-
-import { DecksTable } from './DecksTable/DecksTable'
-import { CreateItemModal } from './createUpdateModals/createItemModal'
 
 const tabs: TabType[] = [
   { disabled: false, title: 'My Cards', value: '1' },
@@ -67,22 +62,6 @@ export const Decks = () => {
     orderBy: sort ? `${sort?.key}-${sort?.direction}` : null,
   })
 
-  const [deleteDeckMutation] = useDeleteDeckMutation()
-  const [createDeck] = useCreateDeckMutation()
-  const [updateDeck] = useUpdateDeckMutation()
-
-  const DeleteDeckCallback = (id: string) => {
-    deleteDeckMutation({ id })
-  }
-
-  const updateDeckCallback = (id: string, data: FormData) => {
-    updateDeck({ data, id })
-  }
-
-  const createDeckCallback = (data: FormData) => {
-    createDeck(data)
-  }
-
   const totalCount = response?.pagination.totalPages
 
   const decks = response?.items
@@ -97,6 +76,12 @@ export const Decks = () => {
     setTabValue('2')
     changeMinMaxCard([0, 60])
   }
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  useEffect(() => {
+    searchParams.set('page', '1')
+    setSearchParams(searchParams)
+  }, [tabValue])
 
   if (isLoading) {
     return <Loader />
@@ -112,7 +97,6 @@ export const Decks = () => {
           <span className={s.addButton}>
             <CreateItemModal
               buttonName={'Add New Pack'}
-              callback={createDeckCallback}
               modalTitle={'Add New Deck'}
               trigger={<Button>Add New Deck</Button>}
             />
@@ -159,14 +143,7 @@ export const Decks = () => {
         </div>
       </div>
 
-      <DecksTable
-        currentUserId={me?.id}
-        decks={decks}
-        onDeleteClick={DeleteDeckCallback}
-        onEditClick={updateDeckCallback}
-        onSort={changeSort}
-        sort={sort}
-      />
+      <DecksTable currentUserId={me?.id} decks={decks} onSort={changeSort} sort={sort} />
       <div className={s.pagination}>
         {decks?.length !== 0 && (
           <Pagination

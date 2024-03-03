@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button, ControlledCheckbox, FileUploader, Modal, TextField } from '@/components'
+import { Deck, useUpdateDeckMutation } from '@/services/decks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { z } from 'zod'
@@ -26,28 +27,30 @@ const updateDecksSchema = z.object({
   name: z.string().min(3),
 })
 
-type updateCallback = (id: string, data: FormData) => void
-
 type UpdateItemModalProps = {
   buttonName: string
-  callback: updateCallback
-  id: string
+  deck: Deck
   modalTitle: string
-  name: string
   trigger: ReactNode
 }
 
 export const UpdateItemModal = (props: UpdateItemModalProps) => {
+  const { buttonName, deck, modalTitle, trigger } = props
   const {
     control,
     formState: { errors },
     handleSubmit,
     register,
   } = useForm<FormValues>({
-    defaultValues: { name: props.name },
+    defaultValues: { name: deck.name },
     resolver: zodResolver(updateDecksSchema),
   })
   const [img, setImg] = useState<File | null>()
+  const [updateDeck] = useUpdateDeckMutation()
+
+  const updateDeckHandler = (id: string, data: FormData) => {
+    updateDeck({ data, id })
+  }
 
   const createDeckCallback = (data: FormValues) => {
     const deckFormData = new FormData()
@@ -59,11 +62,11 @@ export const UpdateItemModal = (props: UpdateItemModalProps) => {
     deckFormData.append('name', data.name)
     deckFormData.append('isPrivate', `${data.private}`)
 
-    props.callback(props.id, deckFormData)
+    updateDeckHandler(deck.id, deckFormData)
   }
 
   return (
-    <Modal title={props.modalTitle} trigger={props.trigger}>
+    <Modal title={modalTitle} trigger={trigger}>
       <form className={s.form} onSubmit={handleSubmit(createDeckCallback)}>
         <TextField label={'Name Pack'} {...register('name')} errorMessage={errors.name?.message} />
         <FileUploader
@@ -89,7 +92,7 @@ export const UpdateItemModal = (props: UpdateItemModalProps) => {
               Cancel
             </Button>
           </DialogClose>
-          <Button type={'submit'}>{props.buttonName}</Button>
+          <Button type={'submit'}>{buttonName}</Button>
         </div>
       </form>
     </Modal>

@@ -27,14 +27,8 @@ const createDecksSchema = z.object({
   name: z.string().min(3),
 })
 
-type updateCallback = (id: string, data: FormData) => void
-
-type createCallback = (data: FormData) => void
-
 type CreateItemModalProps = {
   buttonName: string
-  callback: createCallback | updateCallback
-
   modalTitle: string
   trigger: ReactNode
 }

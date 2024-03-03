@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1010px;
+  width: var(--container-width);
 
   img {
     display: block;

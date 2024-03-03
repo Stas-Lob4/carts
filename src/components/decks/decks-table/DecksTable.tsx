@@ -13,13 +13,13 @@ import {
   TableRow,
   Typography,
 } from '@/components'
+import { UpdateItemModal } from '@/components/modals/decks/create-update-deck/updateModal'
 import { Deck } from '@/services/decks'
 
 import s from './decks-table.module.scss'
 
 import defaultImage from '../../../assets/images/default-image-79ca681b.jpg'
-import { UpdateItemModal } from '../createUpdateModals/updateModal'
-import { DeleteItemModal } from '../deleteItemModal/deleteItemModal'
+import { DeleteItemModal } from '../../modals/decks/deleteItemModal/deleteItemModal'
 
 const columns: Column[] = [
   {
@@ -47,20 +47,11 @@ const columns: Column[] = [
 type Props = {
   currentUserId: string | undefined
   decks: Deck[] | undefined
-  onDeleteClick: (id: string) => void
-  onEditClick: (id: string, data: FormData) => void
   onSort: (key: Sort) => void
   sort: Sort
 }
 
-export const DecksTable = ({
-  currentUserId,
-  decks,
-  onDeleteClick,
-  onEditClick,
-  onSort,
-  sort,
-}: Props) => {
+export const DecksTable = ({ currentUserId, decks, onSort, sort }: Props) => {
   if (decks?.length === 0) {
     return <Typography className={s.noContent}>No content with these terms...</Typography>
   }
@@ -103,20 +94,11 @@ export const DecksTable = ({
                   <>
                     <UpdateItemModal
                       buttonName={'Edit Pack'}
-                      callback={onEditClick}
-                      id={deck.id}
+                      deck={deck}
                       modalTitle={'Edit Deck'}
-                      name={deck.name}
                       trigger={<EditIcon />}
                     />
-                    <DeleteItemModal
-                      deleteCallback={() => {
-                        onDeleteClick(deck.id)
-                      }}
-                      id={deck.id}
-                      modalName={'Deck'}
-                      title={deck.name}
-                    />
+                    <DeleteItemModal id={deck.id} modalName={'Deck'} title={deck.name} />
                   </>
                 )}
               </div>
