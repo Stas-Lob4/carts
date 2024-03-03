@@ -26,22 +26,27 @@ const columns: Column[] = [
   {
     key: 'name',
     title: 'Name',
+    width: '322px',
   },
   {
     key: 'cardsCount',
     title: 'Cards',
+    width: '102px',
   },
   {
     key: 'updated',
     title: 'Last Updated',
+    width: '132px',
   },
   {
     key: 'author',
     title: 'Created By',
+    width: '150px',
   },
   {
     key: 'actions',
     title: '',
+    width: '80px',
   },
 ]
 
