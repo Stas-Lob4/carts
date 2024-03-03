@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { PlayCircleOutline } from '@/assets'
+import DeleteIcon from '@/assets/icons/deleteIcon'
 import EditIcon from '@/assets/icons/editIcon'
 import {
   Button,
@@ -98,7 +99,12 @@ export const DecksTable = ({ currentUserId, decks, onSort, sort }: Props) => {
                       modalTitle={'Edit Deck'}
                       trigger={<EditIcon />}
                     />
-                    <DeleteItemModal id={deck.id} modalName={'Deck'} title={deck.name} />
+                    <DeleteItemModal
+                      id={deck.id}
+                      modalName={'Deck'}
+                      title={deck.name}
+                      trigger={<DeleteIcon />}
+                    />
                   </>
                 )}
               </div>

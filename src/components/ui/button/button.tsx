@@ -19,10 +19,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Button = forwardRef(
-  <T extends ElementType>(
-    props: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>,
-    ref: Ref<ElementRef<T>>
-  ) => {
+  <T extends ElementType>(props: ButtonProps<T>, ref: Ref<ElementRef<T>>) => {
     const { as, className, fullWidth, variant = 'primary', ...rest } = props
     const classNames = clsx(s.button, s[variant], fullWidth && s.fullWidth, className)
 
