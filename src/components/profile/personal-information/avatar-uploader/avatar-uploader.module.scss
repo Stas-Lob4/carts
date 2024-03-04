@@ -27,8 +27,9 @@
     outline: var(--color-info-500);
   }
 
-  &:hover {
-    background: none;
+  :hover {
+    fill: var(--color-dark-100);
+    transition: 0.2s;
   }
 }
 

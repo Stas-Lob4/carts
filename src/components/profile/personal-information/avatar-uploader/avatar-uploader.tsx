@@ -39,7 +39,7 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
 
   const { handleSubmit } = useForm<AvatarUploaderValue>()
 
-  const onSubmitHandler = async (avatar: File | null) => {
+  const submitHandler = async (avatar: File | null) => {
     if (avatar) {
       await updateAvatar(avatar)
       setAvatar(avatar)
@@ -54,7 +54,7 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <div className={classNames.root}>
         <Avatar
           className={classNames.avatar}
@@ -66,9 +66,9 @@ export const AvatarUploader = (props: AvatarUploaderProps) => {
           <FileUploader
             className={classNames.uploader}
             ref={fileRef}
-            setFile={onSubmitHandler}
+            setFile={submitHandler}
             trigger={
-              <Button as={'span'} className={classNames.editAvatar}>
+              <Button as={'span'} className={classNames.editAvatar} variant={'icon'}>
                 <EditAvatar />
               </Button>
             }

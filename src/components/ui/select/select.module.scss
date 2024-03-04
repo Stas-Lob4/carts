@@ -9,7 +9,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
   box-sizing: border-box;
   width: 100%;
@@ -24,7 +24,7 @@
   border-radius: 0.125rem;
 
   &.pagination {
-    padding: 0 0.375rem;
+    padding: 0 0.125rem 0 0.375rem;
   }
 
   &:hover {

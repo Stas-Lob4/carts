@@ -27,6 +27,7 @@
 .userName {
   cursor: pointer;
   border-bottom: 2px dashed var(--color-light-100);
+  transition: 0.2s;
 
   &:hover {
     color: var(--color-accent-100);

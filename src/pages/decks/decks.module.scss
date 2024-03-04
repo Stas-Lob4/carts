@@ -1,61 +1,57 @@
- .body {
-    box-sizing: content-box;
-    max-width: 1010px;
-    margin: 0 auto;
-    padding-block: 30px 30px;
-    padding-inline: 12px;
-} 
+.body {
+  box-sizing: content-box;
+  max-width: 1010px;
+  margin: 0 auto;
+  padding-block: 30px 30px;
+  padding-inline: 12px;
+}
 
 .cardsParameters {
-    display: flex;
-    flex-direction: row;
-    row-gap: 24px;
-    column-gap: 12px;
-    align-items: flex-end;
-    justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 24px;
+  column-gap: 12px;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .allSettings {
-    margin-bottom: 36px;
+  margin-bottom: 36px;
+}
+
+.tabSwitcher > p {
+  margin-bottom: 5px;
+}
+
+.sliderBlock > p {
+  margin-bottom: 5px;
 }
 
 .deleteButton {
-    margin-top: 27px
+  margin-top: 27px;
 }
 
 .table {
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
-
 
 .topItems {
-    display: flex;
-    flex-direction: row;
-    row-gap: 0;
-    column-gap: 0;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  row-gap: 0;
+  column-gap: 0;
+  align-items: center;
+  justify-content: space-between;
 
-
-    margin-bottom: 7px
+  margin-bottom: 7px;
 }
-
 
 .pagination {
-    display: flex;
-    flex-direction: row;
-    row-gap: 24px;
-    column-gap: 24px;
-    align-items: center;
-    justify-content: center;
+  row-gap: 24px;
+  column-gap: 24px;
+  align-items: center;
+  justify-content: center;
 
-    margin-top: 64px;
+  margin-top: 24px;
 }
-
-
-
-
-
-
-
