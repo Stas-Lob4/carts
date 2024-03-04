@@ -94,13 +94,13 @@ export const Decks = () => {
           <div className={s.title}>
             <Typography variant={'large'}>Decks list</Typography>
           </div>
-          <span className={s.addButton}>
+          <div className={s.addButton}>
             <CreateItemModal
               buttonName={'Add New Pack'}
               modalTitle={'Add New Deck'}
               trigger={<Button>Add New Deck</Button>}
             />
-          </span>
+          </div>
         </div>
         <div className={s.cardsParameters}>
           <div className={s.input}>

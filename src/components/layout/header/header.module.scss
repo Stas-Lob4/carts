@@ -21,7 +21,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   width: var(--container-width);
+  padding-inline: var(--container-padding-inline);
 
   img {
     display: block;
@@ -53,7 +55,9 @@
   align-items: center;
   justify-content: center;
 
-  margin-right: -5px;
+  button {
+    padding: 0;
+  }
 }
 
 .userName {

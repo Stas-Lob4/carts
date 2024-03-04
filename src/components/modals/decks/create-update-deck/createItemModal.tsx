@@ -64,16 +64,18 @@ export const CreateItemModal = (props: CreateItemModalProps) => {
     <Modal title={props.modalTitle} trigger={props.trigger}>
       <form className={s.form} onSubmit={handleSubmit(createDeckCallback)}>
         <TextField label={'Name Pack'} {...register('name')} errorMessage={errors.name?.message} />
-        <FileUploader
-          name={'image'}
-          setFile={setImg}
-          trigger={
-            <Button as={'span'} fullWidth style={{ width: '450px' }} variant={'secondary'}>
-              Upload Image
-            </Button>
-          }
-          validationSchema={imageSchema}
-        />
+        <div className={s.fileUploaderBlock}>
+          <FileUploader
+            name={'image'}
+            setFile={setImg}
+            trigger={
+              <Button as={'span'} className={s.buttonImage} fullWidth variant={'secondary'}>
+                Upload Image
+              </Button>
+            }
+            validationSchema={imageSchema}
+          />
+        </div>
         {img && <img src={URL.createObjectURL(img)} style={{ height: '70px', width: '100px' }} />}
         <ControlledCheckbox
           className={s.checkbox}
