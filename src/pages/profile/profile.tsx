@@ -55,7 +55,13 @@ export const Profile = () => {
     <Page className={s.root}>
       <BackButton className={s.backButton} text={'Back to Deck List'} />
       <PersonalInformation
-        data={data}
+        data={
+          data && {
+            avatar: data.avatar,
+            email: data.email,
+            username: data.name,
+          }
+        }
         logout={logoutHandler}
         updateAvatar={updateAvatar}
         updateProfile={updateNickname}

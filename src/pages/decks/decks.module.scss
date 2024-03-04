@@ -48,10 +48,11 @@
 }
 
 .pagination {
-  row-gap: 24px;
+  display: flex;
   column-gap: 24px;
-  align-items: center;
-  justify-content: center;
+  justify-content: start;
 
   margin-top: 24px;
+
+  font-size: var(--font-size-s);
 }

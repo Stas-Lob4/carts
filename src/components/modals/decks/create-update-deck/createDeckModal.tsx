@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { Button, ControlledCheckbox, FileUploader, Modal, TextField } from '@/components'
 import { useCreateDeckMutation } from '@/services/decks'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { DialogClose } from '@radix-ui/react-dialog'
 import { z } from 'zod'
 
 import s from './createUpdateItemModal.module.scss'
@@ -33,7 +32,8 @@ type CreateItemModalProps = {
   trigger: ReactNode
 }
 
-export const CreateItemModal = (props: CreateItemModalProps) => {
+export const CreateDeckModal = (props: CreateItemModalProps) => {
+  const [open, setOpen] = useState(false)
   const {
     control,
     formState: { errors },
@@ -58,10 +58,13 @@ export const CreateItemModal = (props: CreateItemModalProps) => {
     createDeck(deckFormData)
     reset()
     setImg(null)
+    setOpen(false)
   }
 
+  const cancelCreateDeckHandler = () => setOpen(false)
+
   return (
-    <Modal title={props.modalTitle} trigger={props.trigger}>
+    <Modal onOpenChange={setOpen} open={open} title={props.modalTitle} trigger={props.trigger}>
       <form className={s.form} onSubmit={handleSubmit(createDeckCallback)}>
         <TextField label={'Name Pack'} {...register('name')} errorMessage={errors.name?.message} />
         <div className={s.fileUploaderBlock}>
@@ -76,7 +79,13 @@ export const CreateItemModal = (props: CreateItemModalProps) => {
             validationSchema={imageSchema}
           />
         </div>
-        {img && <img src={URL.createObjectURL(img)} style={{ height: '70px', width: '100px' }} />}
+        {img && (
+          <img
+            alt={'avatar'}
+            src={URL.createObjectURL(img)}
+            style={{ height: '70px', width: '100px' }}
+          />
+        )}
         <ControlledCheckbox
           className={s.checkbox}
           control={control}
@@ -84,11 +93,9 @@ export const CreateItemModal = (props: CreateItemModalProps) => {
           name={'private'}
         />
         <div className={s.buttons}>
-          <DialogClose className={s.closeDialog}>
-            <Button type={'button'} variant={'secondary'}>
-              Cancel
-            </Button>
-          </DialogClose>
+          <Button onClick={cancelCreateDeckHandler} variant={'secondary'}>
+            Cancel
+          </Button>
           <Button type={'submit'}>{props.buttonName}</Button>
         </div>
       </form>

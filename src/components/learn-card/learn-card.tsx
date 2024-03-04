@@ -24,7 +24,7 @@ export const LearnCard = (props: LearnCardProps) => {
 
   return (
     <Card className={s.card}>
-      <Typography className={s.title} variant={'h1'}>
+      <Typography className={s.title} variant={'large'}>
         Learn “{deckName}”
       </Typography>
       <LearnBlock description={card.question} img={card.questionImg} main={'Question'} />
