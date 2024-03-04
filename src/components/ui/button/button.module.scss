@@ -95,6 +95,8 @@
 .icon {
   padding: 0;
   color: var(--color-light-100);
+  background: none;
+  text-align: left;
 
   &:hover {
     color: var(--color-accent-500);
