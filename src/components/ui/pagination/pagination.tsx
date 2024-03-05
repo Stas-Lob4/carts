@@ -187,6 +187,7 @@ export const PerPageSelect: FC<PerPageSelectProps> = ({
         className={classNames.select}
         onValueChange={onPerPageChange}
         options={selectOptions}
+        pagination
         value={perPage}
       />
       на странице

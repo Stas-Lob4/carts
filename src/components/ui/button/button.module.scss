@@ -33,6 +33,10 @@
     opacity: 0.5;
   }
 
+  &:focus-visible {
+    outline: 0.125rem solid var(--color-info-700);
+  }
+
   &.fullWidth {
     justify-content: center;
     width: 100%;
@@ -57,29 +61,14 @@
   composes: button;
   color: var(--color-light-100);
   background-color: var(--color-dark-300);
-  box-shadow: 0.25rem 0.25rem 0 rgb(77 86 96 / 13%);
+  box-shadow: 0 0.125rem 0.625rem 0 rgb(109 109 109 / 25%);
 
   &:hover {
-    background-color: var(--color-dark-500);
-  }
-
-  &:active {
     background-color: var(--color-dark-100);
   }
-}
-
-.tertiary {
-  composes: button;
-  color: var(--color-accent-500);
-  background-color: transparent;
-  border: 0.063rem solid var(--color-accent-500);
-
-  &:hover {
-    background-color: var(--color-dark-500);
-  }
 
   &:active {
-    background-color: var(--color-accent-900);
+    background-color: var(--color-dark-500);
   }
 }
 

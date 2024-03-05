@@ -62,6 +62,7 @@ export const FormAddNewItem = <T extends FieldValues>(props: FormAddNewItemProps
         </div>
       ) : (
         <FileUploader
+          className={s.fileUploaderBlock}
           ref={fileRef}
           setFile={setImg}
           trigger={

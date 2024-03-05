@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: space-between;
 
-  width: 450px;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .form {
@@ -15,11 +15,20 @@
   flex-direction: column;
   gap: 24px;
   align-items: start;
-  justify-content: space-between;
 
   width: 100%;
-  max-width: 500px;
-  min-height: 272px;
+}
+
+.fileUploaderBlock {
+  width: 100%;
+
+  label {
+    width: 100%;
+  }
+}
+
+.buttonImage {
+  width: 100%;
 }
 
 .closeDialog {

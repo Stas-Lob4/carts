@@ -2,13 +2,13 @@
   box-sizing: content-box;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding-block: 30px 30px;
+  padding-block: 30px;
   padding-inline: 12px;
 }
 
 .cardsParameters {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   row-gap: 24px;
   column-gap: 12px;
   align-items: flex-end;
@@ -17,6 +17,14 @@
 
 .allSettings {
   margin-bottom: 36px;
+}
+
+.tabSwitcher > p {
+  margin-bottom: 5px;
+}
+
+.sliderBlock > p {
+  margin-bottom: 5px;
 }
 
 .deleteButton {
@@ -41,11 +49,10 @@
 
 .pagination {
   display: flex;
-  flex-direction: row;
-  row-gap: 24px;
   column-gap: 24px;
-  align-items: center;
-  justify-content: center;
+  justify-content: start;
 
-  margin-top: 64px;
+  margin-top: 24px;
+
+  font-size: var(--font-size-s);
 }

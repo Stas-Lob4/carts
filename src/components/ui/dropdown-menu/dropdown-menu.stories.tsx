@@ -10,7 +10,7 @@ import {
 } from '@/components'
 import { Meta, StoryObj } from '@storybook/react'
 
-import p from '../header/user-dropdown/user-dropdown.module.scss'
+import p from '../../layout/header/user-dropdown/user-dropdown.module.scss'
 import s from './dropdown-menu.module.scss'
 
 const meta = {

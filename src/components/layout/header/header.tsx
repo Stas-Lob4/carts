@@ -19,8 +19,8 @@ export const Header = (props: HeaderProps) => {
   return (
     <header className={s.header}>
       <div className={s.headerContent}>
-        <Link to={ROUTES.base}>
-          <img alt={'it-incubator logo'} src={logo} />
+        <Link className={s.logo} to={ROUTES.base}>
+          <img alt={"flashcards' logo"} src={logo} />
         </Link>
 
         {isLoggedIn && profile ? (
@@ -33,7 +33,7 @@ export const Header = (props: HeaderProps) => {
             />
           </div>
         ) : (
-          <Button as={'a'} href={'#'}>
+          <Button as={'a'} variant={'secondary'}>
             Sign In
           </Button>
         )}

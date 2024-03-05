@@ -22,8 +22,8 @@ export const Cards = (props: CardProps) => {
       {isEmpty ? (
         <div className={s.infoBlock}>
           <Typography as={'h2'} className={s.infoText} variant={'h2'}>
-            {'This decks is empty' +
-              (isOwner ? '. ' + 'Click add new card to fill this decks' : '')}
+            {'This deck is empty' +
+              (isOwner ? '. ' + "Click 'Add New Card' to fill this deck in" : '')}
           </Typography>
           {isOwner && <CreateCardModal deckId={deckId} trigger={<Button>Add New Card</Button>} />}
         </div>

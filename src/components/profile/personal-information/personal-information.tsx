@@ -10,20 +10,20 @@ import {
   ProfileInfoForm,
   ProfileInfoFormValues,
 } from '@/components/profile/personal-information/profile-info-form/profile-info-form'
-import { User } from '@/services'
 import { clsx } from 'clsx'
 
 import s from './personal-information.module.scss'
 
-// type ProfileData = {
-//   avatar?: string
-//   email: string
-//   username: string
-// }
+type ProfileData = {
+  avatar?: string
+  email: string
+  username: string
+}
 
 type PersonalInformationProps = {
   className?: string
-  data?: User
+  // User type was used before, but for updating we do not need to update whole User type obj - I guess
+  data?: ProfileData
   logout: () => void
   updateAvatar: (avatar: AvatarUploaderValue) => Promise<void>
   updateProfile: (data: ProfileInfoFormValues) => void
@@ -53,13 +53,13 @@ export const PersonalInformation = (props: PersonalInformationProps) => {
       <AvatarUploader
         avatarUrl={data?.avatar}
         editable={!editMode}
-        name={data?.name}
+        name={data?.username}
         updateAvatar={updateAvatar}
       />
       {editMode ? (
         <ProfileInfoForm
           deactivateEditMode={deactivateEditMode}
-          initialValue={{ name: data?.name ? data?.name : '' }}
+          initialValue={{ name: data?.username ? data?.username : '' }}
           onSubmit={updateProfile}
         />
       ) : (
@@ -67,7 +67,7 @@ export const PersonalInformation = (props: PersonalInformationProps) => {
           activeEditMode={activateEditMode}
           email={data?.email}
           logout={logoutHandler}
-          username={data?.name}
+          username={data?.username}
         />
       )}
     </Card>

@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@/components'
 import { DecksTable } from '@/components/decks/decks-table/DecksTable'
-import { CreateItemModal } from '@/components/modals/decks/create-update-deck/createItemModal'
+import { CreateDeckModal } from '@/components/modals/decks/create-update-deck/createDeckModal'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
 import { useGetDecksQuery } from '@/services/decks'
@@ -94,16 +94,16 @@ export const Decks = () => {
           <div className={s.title}>
             <Typography variant={'large'}>Decks list</Typography>
           </div>
-          <span className={s.addButton}>
-            <CreateItemModal
+          <div className={s.addButton}>
+            <CreateDeckModal
               buttonName={'Add New Pack'}
               modalTitle={'Add New Deck'}
               trigger={<Button>Add New Deck</Button>}
             />
-          </span>
+          </div>
         </div>
         <div className={s.cardsParameters}>
-          <span className={s.input}>
+          <div className={s.input}>
             <TextField
               onChangeValue={setSearch}
               placeholder={'Input search'}
@@ -111,8 +111,8 @@ export const Decks = () => {
               type={'search'}
               value={search}
             />{' '}
-          </span>
-          <span className={s.tabSwitcher}>
+          </div>
+          <div className={s.tabSwitcher}>
             <Typography className={s.caption} variant={'body2'}>
               Show decks cards
             </Typography>
@@ -122,8 +122,8 @@ export const Decks = () => {
               tabs={tabs}
               value={tabValue}
             />
-          </span>
-          <span>
+          </div>
+          <div className={s.sliderBlock}>
             <Typography className={s.caption} variant={'body2'}>
               Number of cards
             </Typography>
@@ -133,13 +133,13 @@ export const Decks = () => {
               style={{ width: '148px' }}
               value={rangeValue}
             />
-          </span>
-          <span className={s.deleteButton}>
+          </div>
+          <div className={s.deleteButton}>
             <Button onClick={clearFilterHandler} variant={'secondary'}>
               <DeleteIcon />
               <Typography variant={'subtitle2'}>Clear Filter</Typography>
             </Button>
-          </span>
+          </div>
         </div>
       </div>
 

@@ -29,6 +29,9 @@ export const WithAvatar: Story = {
       email: 'email@gmail.com',
       username: 'UserName',
     },
+    updateAvatar: async (avatar: File) => {
+      console.log('Updated avatar:', avatar)
+    },
   },
 }
 export const NoAvatar: Story = {
@@ -36,6 +39,9 @@ export const NoAvatar: Story = {
     data: {
       email: 'email@gmail.com',
       username: 'UserName',
+    },
+    updateAvatar: async (avatar: File) => {
+      console.log('Updated avatar:', avatar)
     },
   },
 }

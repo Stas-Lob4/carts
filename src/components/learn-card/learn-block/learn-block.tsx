@@ -15,7 +15,7 @@ export const LearnBlock = (props: LearnBlockProps) => {
 
   return (
     <div className={clsx(s.wrapper, className)}>
-      <Typography as={'p'} className={s.text} variant={'body1'}>
+      <Typography as={'p'} className={s.text} variant={'h3'}>
         <Typography as={'span'} variant={'subtitle1'}>
           {`${main}: `}
         </Typography>

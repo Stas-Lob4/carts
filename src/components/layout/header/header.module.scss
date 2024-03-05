@@ -21,10 +21,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   width: var(--container-width);
+  padding-inline: var(--container-padding-inline);
 
   img {
     display: block;
+  }
+}
+
+.logo {
+  transition: 0.3s;
+
+  &:hover {
+    filter: drop-shadow(0 0 6px var(--color-accent-100));
   }
 }
 
@@ -44,6 +54,10 @@
   gap: 0.75rem;
   align-items: center;
   justify-content: center;
+
+  button {
+    padding: 0;
+  }
 }
 
 .userName {

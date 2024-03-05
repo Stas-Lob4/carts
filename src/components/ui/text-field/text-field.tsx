@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 
-import { Close, Eye, Search, VisibilityOff } from '@/assets'
+import { Close, Search, VisibilityOff, VisibilityOn } from '@/assets'
 import { Typography } from '@/components'
 import { clsx } from 'clsx'
 
@@ -43,10 +43,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const [showPassword, setShowPassword] = useState(false)
     const isSearch = type === 'search'
-    const isShowPasswordButton = type === 'password'
-    const isShowClearButton = isSearch && clearField && rest.value
+    const isPasswordButtonShown = type === 'password'
+    const isClearButtonShown = isSearch && clearField && rest.value
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       if (onChangeValue) {
         onChangeValue(e.target.value)
       }
@@ -68,7 +68,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       closeButton: clsx(s.closeIcon),
       container: clsx(s.container),
       error: clsx(s.error),
-      input: clsx(s.input, !!errorMessage && s.error, isSearch && s.hasSearchIcon, className),
+      input: clsx(
+        s.input,
+        !!errorMessage && s.error,
+        isSearch && s.hasSearchIcon,
+        rest.disabled && s.disabled,
+        className
+      ),
       label: clsx(s.label),
       root: clsx(s.root, rootContainerProps?.className),
       searchIcon: clsx(s.searchIcon, rest.disabled && s.disabled),
@@ -85,23 +91,23 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           {isSearch && <Search className={classNames.searchIcon} />}
           <input
             className={classNames.input}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             placeholder={placeholder}
             ref={ref}
             type={finalInputType}
             {...rest}
           />
-          {isShowPasswordButton && (
+          {isPasswordButtonShown && (
             <button
               className={classNames.buttonIcon}
               disabled={rest.disabled}
               onClick={setShowPasswordHandler}
               type={'button'}
             >
-              {showPassword ? <VisibilityOff /> : <Eye />}
+              {showPassword ? <VisibilityOff /> : <VisibilityOn />}
             </button>
           )}
-          {isShowClearButton && (
+          {isClearButtonShown && (
             <button
               className={classNames.closeButton}
               disabled={rest.disabled}
