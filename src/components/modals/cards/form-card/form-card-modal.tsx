@@ -46,7 +46,7 @@ export const FormCardModal = (props: FormCardModalProps) => {
     formData.append('question', data.question)
     formData.append('answer', data.answer)
     !isStringQuestionImg && formData.append('questionImg', sentQuestionImg)
-    !isStringAnswerImg && formData.append('questionImg', sentAnswerImg)
+    !isStringAnswerImg && formData.append('answerImg', sentAnswerImg)
     onSubmit(formData)
   }
 
