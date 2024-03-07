@@ -14,13 +14,12 @@ import {
   TableRow,
   Typography,
 } from '@/components'
-import { UpdateItemModal } from '@/components/modals/decks/create-update-deck/updateModal'
+import { DeleteDeckModal, EditDeckModal } from '@/components/modals/decks'
 import { Deck } from '@/services/decks'
 
 import s from './decks-table.module.scss'
 
 import defaultImage from '../../../assets/images/default-image-79ca681b.jpg'
-import { DeleteItemModal } from '../../modals/decks/deleteItemModal/deleteItemModal'
 
 const columns: Column[] = [
   {
@@ -98,18 +97,8 @@ export const DecksTable = ({ currentUserId, decks, onSort, sort }: Props) => {
                 </Button>
                 {deck.author.id === currentUserId && (
                   <>
-                    <UpdateItemModal
-                      buttonName={'Edit Pack'}
-                      deck={deck}
-                      modalTitle={'Edit Deck'}
-                      trigger={<EditIcon />}
-                    />
-                    <DeleteItemModal
-                      id={deck.id}
-                      modalName={'Deck'}
-                      title={deck.name}
-                      trigger={<DeleteIcon />}
-                    />
+                    <EditDeckModal deck={deck} trigger={<EditIcon />} />
+                    <DeleteDeckModal deck={deck} trigger={<DeleteIcon />} />
                   </>
                 )}
               </div>
