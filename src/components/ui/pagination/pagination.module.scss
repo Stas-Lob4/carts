@@ -1,85 +1,83 @@
 .root {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-  }
-  
-  .container {
-    display: flex;
-    gap: 12px;
-    list-style-type: none;
-  }
-  
-  @mixin item {
-    all: unset;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    width: 24px;
-    height: 24px;
-  
-    color: var(--color-light-100);
-  
-    border-radius: 2px;
-  }
-  
-  .item {
-    @include item;
-  
-    cursor: pointer;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
 
-  
-    &:disabled {
-      cursor: initial;
-      opacity: 1;
-    }
-  
-    &:active:not(&:disabled)  {
-      background-color: var(--color-dark-900);
-      border: 2px solid var(--color-info-900)
+.container {
+  display: flex;
+  gap: 12px;
+  list-style-type: none;
+}
+
+@mixin item {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: var(--color-light-100);
+
+  border-radius: 2px;
+}
+
+.item {
+  @include item;
+
+  cursor: pointer;
+
+  &:disabled {
+    cursor: initial;
+    opacity: 1;
   }
 
-    &:hover:not(&:disabled, &:active) {
-      background-color: var(--color-dark-500); 
-    }
-  
-    &.selected {
-      color: var(--color-dark-900);
-      background-color: var(--color-light-100);
-    }
-  }
-  
-  .dots {
-    @include item;
-  }
-  
-  .icon {
-    .item:disabled & {
-      filter: invert(50%) sepia(0%) saturate(1%) hue-rotate(166deg) brightness(100%) contrast(89%)
-      !important
-    }
+  &:focus-visible {
+    outline: 2px solid var(--color-info-900);
   }
 
-  
-  
-  .selectBox {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  
-    color: var(--color-light-100);
-    white-space: nowrap;
-
+  &:focus:not(&:active) {
+    background-color: var(--color-dark-900);
   }
-  
-  .select {
-    flex-shrink: 0;
-    width: 30px;
+
+  &:hover:not(&:disabled, &:active) {
     background-color: var(--color-dark-500);
   }
 
-  .active {
-    background-color: var(--color-dark-500);
+  &.selected {
+    color: var(--color-dark-900);
+    background-color: var(--color-light-100);
   }
+}
+
+.dots {
+  @include item;
+}
+
+.icon {
+  .item:disabled & {
+    filter: invert(50%) sepia(0%) saturate(1%) hue-rotate(166deg) brightness(100%) contrast(89%) !important;
+  }
+}
+
+.selectBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  color: var(--color-light-100);
+  white-space: nowrap;
+}
+
+.select {
+  flex-shrink: 0;
+  width: 50px;
+  background-color: var(--color-dark-500);
+}
+
+.active {
+  background-color: var(--color-dark-500);
+}

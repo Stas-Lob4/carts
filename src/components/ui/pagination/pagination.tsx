@@ -65,8 +65,11 @@ export const Pagination: FC<PaginationProps> = ({
     page,
     siblings,
   })
-
   const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
+
+  if (count === 0 || paginationRange.length < 2) {
+    return null
+  }
 
   return (
     <div className={classNames.root}>
@@ -179,14 +182,15 @@ export const PerPageSelect: FC<PerPageSelectProps> = ({
 
   return (
     <div className={classNames.selectBox}>
-      Показать
+      Show
       <Select
         className={classNames.select}
         onValueChange={onPerPageChange}
         options={selectOptions}
+        pagination
         value={perPage}
       />
-      на странице
+      items per page
     </div>
   )
 }

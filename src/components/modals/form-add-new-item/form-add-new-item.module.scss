@@ -1,0 +1,28 @@
+.img {
+  width: 100%;
+  max-height: 12.5rem;
+  object-fit: cover;
+}
+
+.inputContainer {
+  margin: 0.75rem 0;
+}
+
+.fileUploaderBlock {
+  width: 100%;
+}
+
+.buttonImg {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.imgContainer {
+  position: relative;
+}
+
+.delete {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}

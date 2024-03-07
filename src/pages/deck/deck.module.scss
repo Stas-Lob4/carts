@@ -1,0 +1,28 @@
+.backButton {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputSearch {
+  margin: 1.563rem 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.563rem;
+}
+
+.noResult {
+  display: inline-block;
+  margin-top: 1.25rem;
+}

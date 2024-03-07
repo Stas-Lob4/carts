@@ -13,15 +13,15 @@ type Story = StoryObj<typeof meta>
 
 const testData = [
   {
-    title: 'First',
+    label: 'First',
     value: '1',
   },
   {
-    title: 'Second',
+    label: 'Second',
     value: '2',
   },
   {
-    title: 'Third',
+    label: 'Third',
     value: '3',
   },
 ]

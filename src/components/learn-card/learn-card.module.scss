@@ -1,0 +1,25 @@
+.card {
+  align-items: start;
+  width: 100%;
+  max-width: 26.25rem;
+  margin: 0 auto;
+}
+
+.title {
+  align-self: center;
+  margin-bottom: 2.813rem;
+}
+
+.shots {
+  margin-top: 0.063rem;
+  margin-bottom: 0.625rem;
+  color: var(--color-dark-100);
+
+  &Description {
+    color: var(--color-dark-100);
+  }
+}
+
+.button {
+  margin-top: 1.813rem;
+}

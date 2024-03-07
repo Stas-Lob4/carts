@@ -1,3 +1,11 @@
+.root {
+  padding: 0;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -6,6 +14,7 @@
 
 .window {
   position: fixed;
+  z-index: 5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -17,6 +26,7 @@
 
   width: 100%;
   max-width: 540px;
+  padding: 0;
 
   border: 1px solid var(--color-dark-500);
   border-radius: 2px;
@@ -37,20 +47,47 @@
 
   cursor: pointer;
 
-  border: none;
-  outline: none;
+  display: flex;
 
-  fill: white;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  transition: 0.4s background-color;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-dark-300);
+    outline: 2px solid transparent;
+  }
 }
 
 .content {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  align-items: start;
-  justify-content: space-between;
 
-  padding: 24px;
+  width: 100%;
+  max-height: 70vh;
+  padding: 18px 24px 36px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-dark-600);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-100);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-dark-300);
+  }
 }
 
 @keyframes fade-in {

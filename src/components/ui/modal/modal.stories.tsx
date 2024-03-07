@@ -1,4 +1,7 @@
-import { Button, TextField } from '@/components'
+import { useState } from 'react'
+
+import Close from '@/assets/icons/close'
+import { Button, Checkbox, TextField, Typography } from '@/components'
 import { Modal } from '@/components/ui/modal/modal'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -11,34 +14,46 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+const divStyles = {
+  display: 'flex',
+  justifyContent: 'space-between',
+}
+
 export const ModalWithTitle: Story = {
-  args: {
-    buttonName: 'Open modal window with title',
-    children: (
+  render: () => {
+    const [checked, setChecked] = useState(false)
+
+    return (
       <>
-        <TextField placeholder={'Name'} />
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </div>
-        <TextField placeholder={'Email'} />
+        <Modal title={'Add New Deck'} trigger={<Button variant={'primary'}>Add New Deck</Button>}>
+          <TextField label={'Deck Name'} placeholder={'Name'} />
+          <Button variant={'secondary'}>Upload Image</Button>
+          <Checkbox
+            checked={checked}
+            label={'Private decks'}
+            onCheckedChange={() => setChecked(!checked)}
+          />
+          <div style={divStyles}>
+            <Button variant={'secondary'}>Cancel</Button>
+            <Button>Add New Deck</Button>
+          </div>
+        </Modal>
       </>
-    ),
-    title: 'Registration form',
+    )
   },
 }
 
-export const Default: Story = {
+export const ModalWithoutTitle: Story = {
   args: {
-    buttonName: 'Open default modal window',
     children: (
       <>
-        <TextField label={'Pack name'} />
-        <TextField label={'Theme'} />
-        <TextField label={'Language'} />
-        <Button>Submit</Button>
+        <Typography variant={'body1'}>Do you really want to delete it?</Typography>
+        <div style={divStyles}>
+          <Button variant={'secondary'}>Cancel</Button>
+          <Button>Delete Card</Button>
+        </div>
       </>
     ),
+    trigger: <Close fill={'white'} />,
   },
 }
