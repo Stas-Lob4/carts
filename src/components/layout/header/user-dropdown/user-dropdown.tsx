@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Logout, PersonOutline } from '@/assets'
 import { ROUTES } from '@/common'
@@ -28,11 +28,9 @@ export const UserDropDown = (props: UserDropDownProps) => {
   return (
     <DropdownMenuRoot>
       <div className={s.navLinkBox}>
-        <NavLink to={ROUTES.profile}>
-          <Typography className={s.userName} variant={'subtitle1'}>
-            {userName}
-          </Typography>
-        </NavLink>
+        <Typography as={Link} className={s.userName} to={ROUTES.profile} variant={'subtitle1'}>
+          {userName}
+        </Typography>
         <DropdownMenuTrigger asChild>
           <button className={s.trigger}>
             <Avatar name={userName} src={avatar} />

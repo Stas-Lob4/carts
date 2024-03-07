@@ -182,7 +182,7 @@ export const PerPageSelect: FC<PerPageSelectProps> = ({
 
   return (
     <div className={classNames.selectBox}>
-      Показать
+      Show
       <Select
         className={classNames.select}
         onValueChange={onPerPageChange}
@@ -190,7 +190,7 @@ export const PerPageSelect: FC<PerPageSelectProps> = ({
         pagination
         value={perPage}
       />
-      на странице
+      items per page
     </div>
   )
 }

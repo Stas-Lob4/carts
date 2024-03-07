@@ -15,7 +15,7 @@ export const SignUpPage = () => {
       toast.success('Your account has been created successfully. You can sign in now')
       navigate(ROUTES.signIn)
     } catch (e: any) {
-      toast.error(e?.data?.message ?? 'Some error occurred while signing up')
+      toast.error(e?.data?.message ?? 'Email already exists')
     }
   }
 

@@ -25,10 +25,10 @@
   label {
     width: 100%;
   }
-}
 
-.buttonImage {
-  width: 100%;
+  &:focus-visible button {
+    border: yellow 5px solid;
+  }
 }
 
 .closeDialog {

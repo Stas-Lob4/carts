@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { ROUTES } from '@/common'
+import { PASSWORD_RESET_EMAIL_TEMPLATE, ROUTES } from '@/common'
 import { Page, ResetPassword } from '@/components'
 import { RecoverPasswordArgs, useRecoverPasswordMutation } from '@/services'
 
@@ -12,8 +12,7 @@ export const ResetPasswordPage = () => {
   const resetPasswordHandler = async ({ email }: RecoverPasswordArgs) => {
     const payload = {
       email,
-      // html: '<h1>Hi, ##name##</h1><p>Click <a href=`http://localhost:5173/create-password/##token##`>here</a> to reset your password</p>',
-      html: `<h1>Hi, ##name##</h1><p>Click <a href="${window.location.origin}/create-password/##token##">here</a> to reset your password</p>`,
+      html: PASSWORD_RESET_EMAIL_TEMPLATE,
       subject: 'Password recovery',
     }
 

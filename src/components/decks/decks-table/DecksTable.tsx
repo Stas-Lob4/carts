@@ -72,7 +72,7 @@ export const DecksTable = ({ currentUserId, decks, onSort, sort }: Props) => {
               <img
                 alt={`Image Deck: ${deck.name}`}
                 src={deck.cover ? deck.cover : defaultImage}
-                style={{ height: '50px', width: '70px' }}
+                style={{ height: '50px', objectFit: 'cover', width: '70px' }}
               />
               <Typography
                 as={Link}
