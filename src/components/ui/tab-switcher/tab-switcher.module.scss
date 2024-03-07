@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   width: fit-content;
+
+  &:has(:focus-visible) {
+    border-radius: 0.125rem;
+    outline: 0.125rem solid var(--color-info-900);
+    outline-offset: -1px;
+  }
 }
 
 .list {
@@ -26,27 +32,22 @@
   line-height: var(--line-height-m);
   color: var(--color-light-100);
 
-  &:focus-visible {
-    color: var(--color-light-100);
-    background-color: var(--color-dark-700);
-    border: 0.063rem solid var(--color-info-900);
-    outline: 0.063rem solid var(--color-info-900);
-  }
+  border: 0.063rem solid var(--color-dark-300);
+  border-left: none;
+
+  transition: all 0.3s;
 
   &:hover {
     color: var(--color-light-900);
     background-color: var(--color-dark-300);
-    border-color: var(--color-dark-100);
+    border-color: var(--color-dark-100) !important;
   }
 
   &:active,
   &[data-state='active'] {
     color: var(--color-light-100);
-
     background-color: var(--color-accent-500);
-    border: none;
     border-left: 0.063rem solid var(--color-accent-500);
-    outline: none;
   }
 
   &:disabled {
@@ -62,23 +63,16 @@
   }
 
   &:first-child {
-    border: 0.063rem solid var(--color-dark-300);
+    border-left: 0.063rem solid var(--color-dark-300);
     border-radius: 0.125rem 0 0 0.125rem;
 
     &:focus-visible {
       border-radius: 0.125rem;
     }
 
-    &:hover {
-      border-radius: 0.125rem 0 0 0.125rem;
-    }
-
     &:active,
     &[data-state='active'] {
-      border-top: 0.063rem solid var(--color-accent-300);
-      border-right: 0.063rem solid var(--color-accent-500);
-      border-bottom: 0.063rem solid var(--color-accent-500);
-      border-radius: 0.125rem 0 0 0.125rem;
+      border-color: var(--color-accent-500);
       outline: none;
     }
 
@@ -96,16 +90,13 @@
     }
 
     &:hover {
-      border-top: 0.063rem solid var(--color-dark-100);
-      border-right: 0.063rem solid var(--color-dark-100);
-      border-bottom: 0.063rem solid var(--color-dark-100);
       border-left: none;
     }
 
     &:active,
     &[data-state='active'] {
-      border: none;
-      border-left: 0.063rem solid var(--color-accent-500);
+      border-color: var(--color-accent-500);
+      border-left: none;
     }
 
     &:disabled {

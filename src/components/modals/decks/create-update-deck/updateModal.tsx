@@ -69,16 +69,18 @@ export const UpdateItemModal = (props: UpdateItemModalProps) => {
     <Modal title={modalTitle} trigger={trigger}>
       <form className={s.form} onSubmit={handleSubmit(createDeckCallback)}>
         <TextField label={'Name Pack'} {...register('name')} errorMessage={errors.name?.message} />
-        <FileUploader
-          name={'image'}
-          setFile={setImg}
-          trigger={
-            <Button as={'span'} fullWidth variant={'secondary'}>
-              Upload Image
-            </Button>
-          }
-          validationSchema={imageSchema}
-        />
+        <div className={s.fileUploaderBlock}>
+          <FileUploader
+            name={'image'}
+            setFile={setImg}
+            trigger={
+              <Button className={s.buttonUpload} fullWidth variant={'secondary'}>
+                Upload Image
+              </Button>
+            }
+            validationSchema={imageSchema}
+          />
+        </div>
         {img && <img src={URL.createObjectURL(img)} style={{ height: '70px', width: '100px' }} />}
         <ControlledCheckbox
           className={s.checkbox}

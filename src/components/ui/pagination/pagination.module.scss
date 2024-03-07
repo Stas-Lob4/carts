@@ -35,9 +35,12 @@
     opacity: 1;
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--color-info-900);
+  }
+
   &:focus:not(&:active) {
     background-color: var(--color-dark-900);
-    border: 2px solid var(--color-info-900);
   }
 
   &:hover:not(&:disabled, &:active) {

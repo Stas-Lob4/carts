@@ -31,7 +31,9 @@ export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, Modals>((prop
 
   return (
     <Dialog.Root {...rest}>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      <Dialog.Trigger asChild className={classNames.trigger}>
+        {trigger}
+      </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={classNames.overlay} />
         <Dialog.Content asChild className={classNames.window} ref={ref}>

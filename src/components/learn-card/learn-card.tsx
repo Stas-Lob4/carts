@@ -31,7 +31,7 @@ export const LearnCard = (props: LearnCardProps) => {
 
       <Typography as={'p'} className={s.shots} variant={'subtitle2'}>
         <Typography as={'span'} className={s.shotDescription} variant={'body2'}>
-          Количество попыток ответов на вопросов:{' '}
+          The number of attempts to answer the question:{' '}
         </Typography>
         {card.shots}
       </Typography>

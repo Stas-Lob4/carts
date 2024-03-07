@@ -72,7 +72,7 @@ export const CreateDeckModal = (props: CreateItemModalProps) => {
             name={'image'}
             setFile={setImg}
             trigger={
-              <Button as={'span'} className={s.buttonImage} fullWidth variant={'secondary'}>
+              <Button fullWidth variant={'secondary'}>
                 Upload Image
               </Button>
             }

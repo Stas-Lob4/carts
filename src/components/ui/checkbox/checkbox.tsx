@@ -31,7 +31,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
         >
           <div className={classNames.frame}></div>
           {checked && (
-            <CheckboxRadix.Indicator className={classNames.indicator} forceMount>
+            <CheckboxRadix.Indicator className={classNames.indicator}>
               <Check />
             </CheckboxRadix.Indicator>
           )}

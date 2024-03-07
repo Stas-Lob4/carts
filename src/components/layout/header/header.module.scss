@@ -31,10 +31,16 @@
 }
 
 .logo {
+  border-radius: 10px;
+  outline-color: transparent;
   transition: 0.3s;
 
   &:hover {
     filter: drop-shadow(0 0 6px var(--color-accent-100));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
   }
 }
 
