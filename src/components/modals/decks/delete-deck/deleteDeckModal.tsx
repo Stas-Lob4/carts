@@ -1,30 +1,28 @@
 import { ReactNode } from 'react'
 
 import { Button, Modal, Typography } from '@/components'
-import { useDeleteDeckMutation } from '@/services/decks'
+import { Deck, useDeleteDeckMutation } from '@/services/decks'
 import { DialogClose } from '@radix-ui/react-dialog'
 
-import s from './deleteItem.module.scss'
+import s from './deleteDeckModal.module.scss'
 
 type DeleteModalProps = {
-  id: string
-  modalName: string
-  title: string
+  deck: Deck
   trigger: ReactNode
 }
 
-export const DeleteItemModal = (props: DeleteModalProps) => {
-  const { id, modalName, title, trigger } = props
+export const DeleteDeckModal = (props: DeleteModalProps) => {
+  const { deck, trigger } = props
   const [deleteDeckMutation] = useDeleteDeckMutation()
 
   const deleteDeckHandler = () => {
-    deleteDeckMutation({ id: id })
+    deleteDeckMutation({ id: deck.id })
   }
 
   return (
-    <Modal title={`Delete ${modalName}`} trigger={trigger}>
+    <Modal title={`Delete Deck`} trigger={trigger}>
       <div className={s.content}>
-        <Typography>Do you really want to delete {title}?</Typography>
+        <Typography>Do you really want to delete {deck.name}?</Typography>
         <Typography>All cards will be deleted.</Typography>
         <div className={s.buttons}>
           <DialogClose className={s.closeDialog}>
@@ -32,7 +30,7 @@ export const DeleteItemModal = (props: DeleteModalProps) => {
               Cancel
             </Button>
           </DialogClose>
-          <Button onClick={deleteDeckHandler}>Delete {props.modalName}</Button>
+          <Button onClick={deleteDeckHandler}>Delete Deck</Button>
         </div>
       </div>
     </Modal>

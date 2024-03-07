@@ -12,9 +12,8 @@ import {
   Skeleton,
   Typography,
 } from '@/components'
-import { CreateCardModal } from '@/components/modals/cards/create-card/create-card-modal'
-import { UpdateItemModal } from '@/components/modals/decks/create-update-deck/updateModal'
-import { DeleteItemModal } from '@/components/modals/decks/deleteItemModal/deleteItemModal'
+import { CreateCardModal } from '@/components/modals'
+import { DeleteDeckModal, EditDeckModal } from '@/components/modals/decks'
 import { Deck } from '@/services/decks'
 import { clsx } from 'clsx'
 
@@ -70,12 +69,10 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                 )}
                 <DropdownMenuItem onSelect={selectItemHandler}>
                   {deck && (
-                    <UpdateItemModal
-                      buttonName={'Edit Pack'}
+                    <EditDeckModal
                       deck={deck}
-                      modalTitle={'Edit Deck'}
                       trigger={
-                        <Button variant={'icon'}>
+                        <Button fullWidth variant={'icon'}>
                           <Edit />
                           Edit
                         </Button>
@@ -85,10 +82,8 @@ export const CardsHeader = (props: CardsHeaderProps) => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={selectItemHandler}>
-                  <DeleteItemModal
-                    id={deck.id}
-                    modalName={'Deck'}
-                    title={deck.name}
+                  <DeleteDeckModal
+                    deck={deck}
                     trigger={
                       <Button variant={'icon'}>
                         <Trash />

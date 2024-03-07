@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@/components'
 import { DecksTable } from '@/components/decks/decks-table/DecksTable'
-import { CreateDeckModal } from '@/components/modals/decks/create-update-deck/createDeckModal'
+import { CreateDeckModal } from '@/components/modals/decks/create-edit-deck/createDeckModal'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
 import { useGetDecksQuery } from '@/services/decks'
@@ -95,11 +95,7 @@ export const Decks = () => {
             <Typography variant={'large'}>Decks list</Typography>
           </div>
           <div className={s.addButton}>
-            <CreateDeckModal
-              buttonName={'Add New Pack'}
-              modalTitle={'Add New Deck'}
-              trigger={<Button>Add New Deck</Button>}
-            />
+            <CreateDeckModal trigger={<Button>Add New Deck</Button>} />
           </div>
         </div>
         <div className={s.cardsParameters}>
