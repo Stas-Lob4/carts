@@ -15,8 +15,8 @@ import {
   TextField,
   Typography,
 } from '@/components'
-import { DecksTable } from '@/components/decks/decks-table/DecksTable'
-import { CreateDeckModal } from '@/components/modals/decks/create-edit-deck/createDeckModal'
+import { DecksTable } from '@/components/decks/decks-table/decks-table'
+import { CreateDeckModal } from '@/components/modals/decks/create-deck/create-deck'
 import { Pagination } from '@/components/ui/pagination/pagination'
 import { useGetMeQuery } from '@/services'
 import { useGetDecksQuery } from '@/services/decks'
