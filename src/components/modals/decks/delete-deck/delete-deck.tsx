@@ -4,7 +4,7 @@ import { Button, Modal, Typography } from '@/components'
 import { Deck, useDeleteDeckMutation } from '@/services/decks'
 import { DialogClose } from '@radix-ui/react-dialog'
 
-import s from './deleteDeckModal.module.scss'
+import s from './delete-deck.module.scss'
 
 type DeleteModalProps = {
   deck: Deck
