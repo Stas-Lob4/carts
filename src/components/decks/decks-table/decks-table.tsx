@@ -38,7 +38,7 @@ const columns: Column[] = [
     width: '132px',
   },
   {
-    key: 'author',
+    key: 'author.name',
     title: 'Created By',
     width: '150px',
   },
