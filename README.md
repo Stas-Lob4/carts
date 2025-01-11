@@ -10,7 +10,6 @@ In this application you can create a set of cards on absolutely any topic and us
 
 Register or use the test account:
 
-login: test.account.cards@gmail.com
+login: kisimi6143@pariag.com
 
 password: 1234
-}
