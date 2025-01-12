@@ -3,7 +3,7 @@ import {
   Outlet,
   RouteObject,
   RouterProvider,
-  createBrowserRouter,
+  createHashRouter,
 } from 'react-router-dom'
 
 import { ROUTES } from '@/common'
@@ -73,7 +73,7 @@ const privateRouter: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     children: [
       ...publicRouter,
